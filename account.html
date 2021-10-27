@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+    <link rel="STYLESHEET" href="css/index.css" type="text/css">
+
+</head>
+
+<body>
+
+    <div class="header">
+
+        <div class="container">
+            <div class="taskbar">
+                <button class="buttonpost" id="myBtn">+</button>
+                <a href=" #instellingen">Instellingen</a>
+                <a class="active" href=" account.html">Account</a>
+                <a href="Dashboard.html">Home</a>
+
+                <!-- Hier wordt het venstertje aangemaakt -->
+                <div id="myModal" class="modal">
+
+                    <!-- Hier wordt de inhoud van het venster weergeven -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <textarea>  </textarea>
+                        <button class="buttoninpost" id="posten1">Post</button>
+                    </div>
+
+                </div>
+
+                <!-- Hier wordt er aangegeven dat het aankomende stukje is geschreven in JavaScript -->
+                <script>
+                    // Hier wordt gezegd dat het venstertje gelezen moet worden
+                    var modal = document.getElementById("myModal");
+
+                    // Hier wordt gezegd dat het knopje wat het venstertje moet openen gelezen moet worden
+                    var btn = document.getElementById("myBtn");
+
+                    // Hier wordt gezegd dat het knopje wat het venstertje moet sluiten gelezen moet worden
+                    var span = document.getElementsByClassName("close")[0];
+
+                    // Hier wordt aangegeven dat het venstertje geopent moet worden zodra er op het '+' knpje wordt geklikt
+                    btn.onclick = function () {
+                        modal.style.display = "block";
+                    }
+
+                    // Hier wordt aangegeven dat het venstertje gesloten moet worden zodra er op het 'x' knpje wordt geklikt
+                    span.onclick = function () {
+                        modal.style.display = "none";
+                    }
+
+                    // Hier wordt aangegeven dat het venstertje gesloten moet worden zodra er op een plek buiten het venster wordt geklikt
+                    window.onclick = function (event) {
+                        if (event.target == modal) {
+                            modal.style.display = "none";
+                        }
+                    }
+                </script>
+                <!-- Hier wordt het stukje dat is geschreven in JavaScript gesloten, dus gaat het weer verder met HTML -->
+            </div>
+        </div>
+
+</body>
+
+</html>
