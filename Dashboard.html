@@ -28,8 +28,11 @@
                     <!-- Hier wordt de inhoud van het venster weergeven -->
                     <div class="modal-content">
                         <span class="close">&times;</span>
-                        <textarea>  </textarea>
+                        <textarea id="post-tekst">  </textarea>
                         <button class="buttoninpost" id="posten1">Post</button>
+                        <button class="B-knop" id="B-knop">B</button>
+                        <button class="I-knop" id="I-knop">I</button>
+                        <button class="U-knop" id="U-knop">U</button>
                     </div>
 
                 </div>
@@ -44,6 +47,11 @@
 
                     // Hier wordt gezegd dat het knopje wat het venstertje moet sluiten gelezen moet worden
                     var span = document.getElementsByClassName("close")[0];
+                    var posttekst = document.getElementById("post-tekst");
+
+                    var B_knop = document.getElementById("B-knop");
+                    var I_knop = document.getElementById("I-knop");
+                    var U_knop = document.getElementById("U-knop");
 
                     // Hier wordt aangegeven dat het venstertje geopent moet worden zodra er op het '+' knpje wordt geklikt
                     btn.onclick = function () {
@@ -61,6 +69,34 @@
                             modal.style.display = "none";
                         }
                     }
+                    
+                    B_knop.onclick = function () {
+                        if (posttekst.style.fontWeight == "bold"){
+                            posttekst.style.fontWeight = "normal";
+                        }
+                        else {
+                            posttekst.style.fontWeight = "bold";
+                        }
+                    }
+
+                    I_knop.onclick = function () {
+                        if (posttekst.style.fontStyle == "italic"){
+                            posttekst.style.fontStyle = "normal";
+                        }
+                        else {
+                            posttekst.style.fontStyle = "italic";
+                        }
+                    }                    
+                    
+                    U_knop.onclick = function () {
+                        if (posttekst.style.textDecoration == "underline"){
+                            posttekst.style.textDecoration = "none";
+                        }
+                        else {
+                            posttekst.style.textDecoration = "underline";
+                        }
+                    }
+
                 </script>
                 <!-- Hier wordt het stukje dat is geschreven in JavaScript gesloten, dus gaat het weer verder met HTML -->
 

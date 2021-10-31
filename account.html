@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account</title>
-    <link rel="STYLESHEET" href="css/index.css" type="text/css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
 
 </head>
 
@@ -15,54 +16,69 @@
 
         <div class="container">
             <div class="taskbar">
-                <button class="buttonpost" id="myBtn">+</button>
                 <a href=" #instellingen">Instellingen</a>
                 <a class="active" href=" account.html">Account</a>
                 <a href="Dashboard.html">Home</a>
+            </div>
 
-                <!-- Hier wordt het venstertje aangemaakt -->
-                <div id="myModal" class="modal">
+            <div class="container-account">
+                <div class="leftbox">
+                    <nav>
+                        <a-account onclick="tabs(0)" class="tab active">
+                            <i class="fa fa-user"></i>
+                        </a-account>
+                        <a-account onclick="tabs(1)" class="tab">
+                            <i class="fas fa-envelope"></i>
+                        </a-account>
+                    </nav>
+                </div>
+                <div class="rightbox-account">
 
-                    <!-- Hier wordt de inhoud van het venster weergeven -->
-                    <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <textarea>  </textarea>
-                        <button class="buttoninpost" id="posten1">Post</button>
+                    <div class="profile tabShow">
+                        <h1>Persoons informatie</h1>
+                        <h2>Voornaam</h2>
+                        <input type="text" class="input" value="Micha">
+                        <h2>Achternaam</h2>
+                        <input type="text" class="input" value="Verwey">
+                        <h2>Geboortedatum</h2>
+                        <input type="text" class="input" value="22 december 2004">
+                        <button class="update">Update</button>
                     </div>
-
+                    <div class="settings tabShow">
+                        <h1>Inloggegevens</h1>
+                        <h2>Gebruikersnaam</h2>
+                        <input type="text" class="input" value="Michaa">
+                        <h2>Emailadres</h2>
+                        <input type="text" class="input" value="205621@unic-utrecht.nl">
+                        <h2>Wachtwoord</h2>
+                        <input type="password" class="input" value="wachtwoord">
+                        <button class="update">Update</button>
+                    </div>
                 </div>
 
                 <!-- Hier wordt er aangegeven dat het aankomende stukje is geschreven in JavaScript -->
+                <script src="https://code.jquery.com/jquery-3.6.0.js"
+                    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
                 <script>
-                    // Hier wordt gezegd dat het venstertje gelezen moet worden
-                    var modal = document.getElementById("myModal");
+                    const tabBtn = document.querySelectorAll(".tab");
+                    const tab = document.querySelectorAll(".tabShow");
 
-                    // Hier wordt gezegd dat het knopje wat het venstertje moet openen gelezen moet worden
-                    var btn = document.getElementById("myBtn");
-
-                    // Hier wordt gezegd dat het knopje wat het venstertje moet sluiten gelezen moet worden
-                    var span = document.getElementsByClassName("close")[0];
-
-                    // Hier wordt aangegeven dat het venstertje geopent moet worden zodra er op het '+' knpje wordt geklikt
-                    btn.onclick = function () {
-                        modal.style.display = "block";
+                    function tabs(panelIndex) {
+                        tab.forEach(function (node) {
+                            node.style.display = "none";
+                        });
+                        tab[panelIndex].style.display = "block";
                     }
-
-                    // Hier wordt aangegeven dat het venstertje gesloten moet worden zodra er op het 'x' knpje wordt geklikt
-                    span.onclick = function () {
-                        modal.style.display = "none";
-                    }
-
-                    // Hier wordt aangegeven dat het venstertje gesloten moet worden zodra er op een plek buiten het venster wordt geklikt
-                    window.onclick = function (event) {
-                        if (event.target == modal) {
-                            modal.style.display = "none";
-                        }
-                    }
+                    tabs(0);
                 </script>
-                <!-- Hier wordt het stukje dat is geschreven in JavaScript gesloten, dus gaat het weer verder met HTML -->
+                <script>
+                    $(".tab").click(function () {
+                        $(this).addClass("active").siblings().removeClass("active");
+                    })
+                </script>
             </div>
         </div>
+    </div>
 
 </body>
 
