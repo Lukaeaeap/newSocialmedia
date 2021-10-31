@@ -1,4 +1,2 @@
-# Hi this is the readme file
-# Test comment
-#Luuk is vervelend
-#git slaat nergens op
+# Epische social media site
+#git en github werken fantastisch voor dit project
