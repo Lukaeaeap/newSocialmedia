@@ -4,17 +4,17 @@
     outline: none;
     box-sizing: border-box;
 }
- 
-body {  
-    height: 100vh;
-    width: 100%;
-    background: linear-gradient(115deg, #f0e3e3 10%, rgb(156, 146, 146) 90%);
-    font-family: 'Arial', cursive;/* LETTERTYPE NOG VERANDEREN */
 
+/* Dit stuk fixed het feit dat de linear-gradient zich herhaalt */
+html {
+    min-height: 100%;
 }
-
-
-
+body {
+    background: linear-gradient(180deg, #FFFFFF 0%, #6284FF 100%);
+    /*font-family: 'Times New Roman', Times, serif;*/
+    font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    /* LETTERTYPE NOG VERANDEREN */
+}
 
 
 /* Hieronder is de vormgeving van de Loginbox te zien */
@@ -26,8 +26,10 @@ body {
     transform: translate(-50%, -50%);
     background: #ffffff;
     width: 410px;
-    padding: 20px 30px; /* verplaatsing voor de tekst IN een 'box' en bij margin is er verplaatsing van de hele webpagina */
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1); /* hier maak je de zijlijnen van de 'box' zichtbaar doormiddel van het gebruiken van schaduwen */
+    padding: 20px 30px;
+    /* verplaatsing voor de tekst IN een 'box' en bij margin is er verplaatsing van de hele webpagina */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    /* hier maak je de zijlijnen van de 'box' zichtbaar doormiddel van het gebruiken van schaduwen */
     border-radius: 5px;
 
 }
@@ -35,9 +37,11 @@ body {
 /* Dit is het kopje 'login' in de loginbox en het kopje 'registreer'in de Registreerbox*/
 .kopje-text {
     font-size: 35px;
-    font-weight: 30; /* Dit is de dikgedruktheid van het kopje */
+    font-weight: 30;
+    /* Dit is de dikgedruktheid van het kopje */
     text-align: center;
-    margin-bottom: 20px; /* Voor meer afstand tussen de omringende factoren */
+    margin-bottom: 20px;
+    /* Voor meer afstand tussen de omringende factoren */
 
 }
 
@@ -49,13 +53,16 @@ body {
     transform: translate(-50%, -50%);
     background: #ffffff;
     width: 410px;
-    padding: 20px 30px; /* verplaatsing voor de tekst IN een 'box' en bij margin is er verplaatsing van de hele webpagina */
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1); /* hier maak je de zijlijnen van de 'box' zichtbaar doormiddel van het gebruiken van schaduwen */
-    border-radius: 5px; /* Dit maakt de hoeken van de box een beetje rond */
+    padding: 20px 30px;
+    /* verplaatsing voor de tekst IN een 'box' en bij margin is er verplaatsing van de hele webpagina */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    /* hier maak je de zijlijnen van de 'box' zichtbaar doormiddel van het gebruiken van schaduwen */
+    border-radius: 5px;
+    /* Dit maakt de hoeken van de box een beetje rond */
 }
 
 /* Dit zijn de vakjes waarin de Emails en Wachtwoorden worden ingevuld */
-form .data input { 
+form .data input {
     height: 100%;
     width: 100%;
     padding-left: 10px;
@@ -72,9 +79,9 @@ form .data input {
     justify-content: center;
     /* Voor meer afstand tussen de omringende factoren */
     margin-top: 10px;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
 }
-  
+
 .box button {
     background-color: white;
     border-color: silver;
@@ -86,81 +93,79 @@ form .data input {
     border-radius: 5px;
     transition-duration: 0.4s;
 }
-        
+
 .box button:hover {
     background-color: silver;
     font-size: 16px;
     color: #000;
     cursor: pointer;
-} 
-
-
-
-
-
-
-
+}
 
 /* ALLE CSS VAN HET DASHBOARD */
 /* Een achtergrondkleur voor de taakbalk */
 .taskbar {
-    background-color: #333;
     overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
-/*Geef de tekst in de taakbalk eens stijl*/
-.taskbar a {
-    float: right;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 20px 35px;
-    text-decoration: none;
-    font-size: 18px;
-    
+.imgHome {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
 }
 
 /* Hiermee veranderd de kleur als je met je muis over het vakje gaat*/
-.taskbar a:hover{
-    background-color: #ddd;
+.taskbar:hover {
+    background-color: whitesmoke;
     color: black
 }
 
-/*Hiermee krijgt de huidige pagina een kleur*/
-.taskbar a.active{
-    background-color: #ee4068;
-    color: #000;
-}
-
-.buttonpost{
-    float: right;
-    color: #ee4068;
+.buttonpost {
+    color: black;
+    border-color: #cdebf9;
     text-align: center;
     padding: 20px 35px;
-    font-size:18px;
+    font-size: 18px;
+    width: 97px;
     text-decoration: none;
     cursor: pointer;
-    background-color: #333;
-    border: none;
+    background-color: #cdebf9;
+    cursor: pointer;
+    border: 10px;
+    border-radius: 15px;
+    position: fixed;
+    bottom: 80px;
+    right: 10px;
+
 }
 
 /* Dit is het venstertje wat opkomt als je op de '+' klikt om een post aan te maken */
 .modal {
-    display: none; /* VRAGEN AAN LEX WAT DIT PRECIES DOET */
-    position: fixed; /* VRAGEN AAN LEX WAT DIT PRECIES DOET */
-    z-index: 1; /* VRAGEN AAN LEX WAT DIT PRECIES DOET */
+    display: none;
+    /* VRAGEN AAN LEX WAT DIT PRECIES DOET */
+    position: fixed;
+    /* VRAGEN AAN LEX WAT DIT PRECIES DOET */
+    z-index: 1;
+    /* VRAGEN AAN LEX WAT DIT PRECIES DOET */
     /* onderstaande elementen zijn voor de positionering van het venstertje */
-    padding-top: 100px; 
+    padding-top: 100px;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto; /* Dit maakt het mogelijk om te scrollen in het venstertje als je text bijrbeeld zo groot is dat het niet volledig is te zien in het venstertje */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Dit is de achtergrondkleur vand e pagina zodra het venstertje opent */
-  }
-  
-  /* Dit is de CSS van het venstertje zelf, dus wat er aan de binnenkant afspeelt */
-  .modal-content {
+    overflow: auto;
+    /* Dit maakt het mogelijk om te scrollen in het venstertje als je text bijrbeeld zo groot is dat het niet volledig is te zien in het venstertje */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Dit is de achtergrondkleur vand e pagina zodra het venstertje opent */
+}
+
+/* Dit is de CSS van het venstertje zelf, dus wat er aan de binnenkant afspeelt */
+.modal-content {
     background-color: #fefefe;
     margin: auto;
     padding: 30px;
@@ -168,50 +173,52 @@ form .data input {
     width: 45%;
     min-height: 60%;
     border-radius: 30px;
-  }
+}
 
-  /* Dit is de CSS van het textvakje */
-  .modal-content textarea {
+/* Dit is de CSS van het textvakje */
+.modal-content textarea {
     font-family: Arial;
-    resize: none; /*Dit zorgt ervoor dat je de grootte van het tekstvak niet kunt veranderen via de site */
+    resize: none;
+    /*Dit zorgt ervoor dat je de grootte van het tekstvak niet kunt veranderen via de site */
     height: 220px;
     width: 99%;
     margin-left: 0.5%;
-    padding: 10px;
+    padding: 15px;
     border-radius: 30px;
-  }
-  
+}
+
 /* Dit is de CSS van het kruisje waarmee het venster gesloten kan worden */
 .close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
+}
+
+.close:hover,
+.close:focus {
     color: #000;
     text-decoration: none;
-    cursor: pointer; /* Dit zorgt ervoor dat je muis een pointer krijgt */
-  }
+    cursor: pointer;
+    /* Dit zorgt ervoor dat je muis een pointer krijgt */
+}
 
-.buttoninpost{
+.buttoninpost {
     float: right;
-    color: rgb(255, 255, 255);
-    background-color: #ee4068;
-    border-color: rgb(255, 255, 255);
+    color: black;
+    background-color: #cdebf9;
+    border-color: #cdebf9;
     text-align: center;
     margin: 3% 3px;
     padding: 6px 20px;
     height: 38px;
     width: 87px;
-    font-size:14px;
+    font-size: 14px;
     cursor: pointer;
     border-radius: 15px;
 }
 
-.B-knop{
+.B-knop {
     font-weight: bold;
     float: left;
     color: #000;
@@ -220,13 +227,13 @@ form .data input {
     padding: 6px 20px;
     height: 35px;
     width: 55px;
-    font-size:14px;
+    font-size: 14px;
     cursor: pointer;
     background-color: transparent;
     border-radius: 15px;
 }
 
-.I-knop{ 
+.I-knop {
     font-style: italic;
     float: left;
     color: #000;
@@ -235,13 +242,13 @@ form .data input {
     padding: 6px 20px;
     height: 35px;
     width: 55px;
-    font-size:14px;
+    font-size: 14px;
     cursor: pointer;
     background-color: transparent;
     border-radius: 15px;
 }
 
-.U-knop{
+.U-knop {
     text-decoration: underline;
     float: left;
     color: #000;
@@ -250,83 +257,139 @@ form .data input {
     padding: 6px 20px;
     height: 35px;
     width: 55px;
-    font-size:14px;
+    font-size: 14px;
     cursor: pointer;
     background-color: transparent;
     border-radius: 15px;
 }
 
-.buttoninpost button:hover{
-    background-color: #FF0000;
+.buttoninpost:hover {
+    background-color: whitesmoke;
+}
+
+/* De CSS van de fake posts */
+#fake-post1 {
+    font-family: Arial;
+    text-decoration: underline;
+    background-color: white;
+    resize: none;
+    /*Dit zorgt ervoor dat je de grootte van het tekstvak niet kunt veranderen via de site */
+    height: 190px;
+    width: 60%;
+    margin: 7% 20% 1% 20%;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+#fake-post2 {
+    font-family: Arial;
+    background-color: white;
+    font-weight: bold;
+    resize: none;
+    /*Dit zorgt ervoor dat je de grootte van het tekstvak niet kunt veranderen via de site */
+    height: 190px;
+    width: 60%;
+    margin: 1% 20%;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+#fake-post3 {
+    display: block;
+    font-family: Arial;
+    background-color: white;
+    font-style: italic;
+    resize: none;
+    /*Dit zorgt ervoor dat je de grootte van het tekstvak niet kunt veranderen via de site */
+    height: 190px;
+    width: 60%;
+    margin: 1% 20%;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+#fake-post-tot {
+    display: block;
+    font-family: Arial;
+    font-weight: bold;
+    background-color: white;
+    resize: none;
+    /*Dit zorgt ervoor dat je de grootte van het tekstvak niet kunt veranderen via de site */
+    height: 190px;
+    width: 60%;
+    margin: 1% 20%;
+    padding: 15px;
+    border-radius: 20px;
+
 
 }
 
-
 /*ALLE CSS VAN DE ACCOUNT PAGINA*/
-.container-account{
+.container-account {
     background: #fff;
     width: 540px;
     height: 458px;
     margin: 0 auto;
     position: relative;
     margin-top: 10%;
-    box-shadow: 2px 5px 20px rgba(119,119,119,.5);
+    box-shadow: 2px 5px 20px rgba(119, 119, 119, .5);
 }
 
-.leftbox{
-    float:left;
+.leftbox {
+    float: left;
     top: -5%;
     left: 5%;
     position: absolute;
     width: 15%;
     height: 110%;
-    background: #ee4068;
-    box-shadow: 3px 3px 10px rgba(119,119,119,.5);
+    background: linear-gradient(180deg, #FFFFFF 0%, #6284FF 100%);
+    ;
+    box-shadow: 3px 3px 10px rgba(119, 119, 119, .5);
     border-style: solid;
 }
 
-nav a-account{
+nav a-account {
     list-style: none;
     padding: 20px;
-    color: black;
+    color: gray;
     font-size: 2.0em;
     display: block;
     transition: all 0.5s ease-in-out;
 }
 
-nav a-account:hover{
-    color:blanchedalmond;
+nav a-account:hover {
+    color: blanchedalmond;
     cursor: pointer;
     transform: scale(1.2);
 }
 
-nav a-account:first-child{
+nav a-account:first-child {
     margin-top: 7px;
 }
 
-nav a-account.active{
-    color:blanchedalmond;
+nav a-account.active {
+    color: black;
 }
 
-.rightbox-account{
+.rightbox-account {
     width: 60%;
     margin-left: 27%;
     padding: 5px;
 }
 
-.tabShow{
+.tabShow {
     transition: all 2s ease-in;
     width: 80%;
     position: absolute;
 }
 
-h1{
+h1 {
     font-size: 1.2rem;
     margin-top: 40px;
     margin-bottom: 35px;
 }
 
-h2{
+h2 {
     font-size: 8px;
     letter-spacing: 1px;
     margin-left: 2px;
@@ -335,7 +398,7 @@ h2{
 
 input {
     border: 0;
-    border-bottom: 1px solid #ee4068;
+    border-bottom: 1px solid;
     width: 90%;
     font-size: .7em;
     padding: 2px 0;
@@ -343,23 +406,43 @@ input {
     outline: none;
 }
 
-span{
+span {
     font-size: .7em;
     color: #777;
 }
 
-.update{
+.update {
     text-transform: uppercase;
     font-size: 15px;
     border: 0;
-    color:black;
-    background: #ee4068;
+    color: black;
+    background: linear-gradient(180deg, #FFFFFF 0%, #6284FF 100%);
     padding: 7px 15px;
-    box-shadow: 0px 2px 4px 0px rgba(0,0,0,.2);
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, .2);
     cursor: pointer;
     margin-top: 15px;
 }
 
-.tabShow{
+.tabShow {
     display: none;
+}
+
+/*Hieronder is de button gemaakt die op de homepage rechtsonder zichtbaar is, genaamd account*/
+.butaccount {
+    border-color: #cdebf9;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    color: black;
+    background: #cdebf9;
+    padding: 21px 21px;
+    cursor: pointer;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+.Welkom {
+    text-align: center;
+    margin-top: 100px;
 }
