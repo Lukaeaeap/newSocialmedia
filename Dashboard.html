@@ -1,108 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meta</title>
+    <link rel="shortcut icon" type="img/png" href="/images/Favicon.png" />
+    <link rel="STYLESHEET" href="css/index.css" type="text/css" />
+  </head>
 
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="STYLESHEET" href="css/index.css" type="text/css">
-
-</head>
-
-<body>
+  <body>
     <!--Hieronder is de class waarin we onze menubalk hebben. -->
 
     <div class="header">
-
-
-        <div class="container">
-            <div class="taskbar">
-                <button class="buttonpost" id="myBtn">+</button>
-                <a href=" #instellingen">Instellingen</a>
-                <a href="account.html">Account</a>
-                <a class="active" href="Dashboard.html">Home</a>
-
-                <!-- Hier wordt het venstertje aangemaakt -->
-                <div id="myModal" class="modal">
-
-                    <!-- Hier wordt de inhoud van het venster weergeven -->
-                    <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <textarea id="post-tekst">  </textarea>
-                        <button class="buttoninpost" id="posten1">Post</button>
-                        <button class="B-knop" id="B-knop">B</button>
-                        <button class="I-knop" id="I-knop">I</button>
-                        <button class="U-knop" id="U-knop">U</button>
-                    </div>
-
-                </div>
-
-                <!-- Hier wordt er aangegeven dat het aankomende stukje is geschreven in JavaScript -->
-                <script>
-                    // Hier wordt gezegd dat het venstertje gelezen moet worden
-                    var modal = document.getElementById("myModal");
-
-                    // Hier wordt gezegd dat het knopje wat het venstertje moet openen gelezen moet worden
-                    var btn = document.getElementById("myBtn");
-
-                    // Hier wordt gezegd dat het knopje wat het venstertje moet sluiten gelezen moet worden
-                    var span = document.getElementsByClassName("close")[0];
-                    var posttekst = document.getElementById("post-tekst");
-
-                    var B_knop = document.getElementById("B-knop");
-                    var I_knop = document.getElementById("I-knop");
-                    var U_knop = document.getElementById("U-knop");
-
-                    // Hier wordt aangegeven dat het venstertje geopent moet worden zodra er op het '+' knpje wordt geklikt
-                    btn.onclick = function () {
-                        modal.style.display = "block";
-                    }
-
-                    // Hier wordt aangegeven dat het venstertje gesloten moet worden zodra er op het 'x' knpje wordt geklikt
-                    span.onclick = function () {
-                        modal.style.display = "none";
-                    }
-
-                    // Hier wordt aangegeven dat het venstertje gesloten moet worden zodra er op een plek buiten het venster wordt geklikt
-                    window.onclick = function (event) {
-                        if (event.target == modal) {
-                            modal.style.display = "none";
-                        }
-                    }
-                    
-                    B_knop.onclick = function () {
-                        if (posttekst.style.fontWeight == "bold"){
-                            posttekst.style.fontWeight = "normal";
-                        }
-                        else {
-                            posttekst.style.fontWeight = "bold";
-                        }
-                    }
-
-                    I_knop.onclick = function () {
-                        if (posttekst.style.fontStyle == "italic"){
-                            posttekst.style.fontStyle = "normal";
-                        }
-                        else {
-                            posttekst.style.fontStyle = "italic";
-                        }
-                    }                    
-                    
-                    U_knop.onclick = function () {
-                        if (posttekst.style.textDecoration == "underline"){
-                            posttekst.style.textDecoration = "none";
-                        }
-                        else {
-                            posttekst.style.textDecoration = "underline";
-                        }
-                    }
-
-                </script>
-                <!-- Hier wordt het stukje dat is geschreven in JavaScript gesloten, dus gaat het weer verder met HTML -->
-
+      <div class="container">
+        <div class="taskbar">
+          <img
+            src="/images/Logo-website.jpg"
+            alt="Logo van de website als home knop"
+            class="imgHome"
+            width="70px"
+            height="70px"
+            onclick="window.location.href='Dashboard.html'"
+          />
+          <!-- Hier wordt het venstertje aangemaakt -->
+          <div id="myModal" class="modal">
+            <!-- Hier wordt de inhoud van het venster weergeven -->
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <textarea form id="post-tekst"> </textarea>
+              <button class="buttoninpost" id="posten1">Post</button>
+              <button class="B-knop" id="B-knop">B</button>
+              <button class="I-knop" id="I-knop">I</button>
+              <button class="U-knop" id="U-knop">U</button>
             </div>
+          </div>
         </div>
-    </div>
-</body>
 
+        <!---Hier wordt de tekst en buttons onder de taakbalk weergegeven-->
+        <div>
+          <h1 class="Welkom">Welkom bij Meta!</h1>
+        </div>
+
+        <textarea disabled id="fake-post1">
+        Vanaf december kunnen 80-plussers een ‘booster’-prik krijgen, net als inwoners van zorginstellingen en zorgmedewerkers. Het gaat om een extra vaccinatie om de werking van het vaccin te versterken. Vanaf januari kunnen mensen tussen 60 en 80 jaar die krijgen, daarna iedereen die dat wil. 
+        </textarea>
+        <textarea disabled id="fake-post2">
+        Natuurlijk, @geertwilderspvv
+        Telkens een test doen kan heel vervelend zijn.
+        Maar ik hoop ook op respect voor al die hartpatiënten waarvan operaties nu worden afgebeld. 
+        Zij staan misschien niet te demonstreren, maar voor hen is deze nieuwe golf lood- en loodzwaar.
+        </textarea>
+        <textarea disabled id="fake-post3">
+        Terugreis naar Utrecht Terwijde is onmogelijk. Servicepunt op Utrecht Centraal weigert alternatief vervoer te regelen. Draaien de verantwoordelijkheid om en zeggen dat ik maar op toegankelijke trein moet wachten. “Dit zijn de regels!” Hoe vinden jullie zelf dat het gaat NS? 
+        </textarea>
+        <!--om te testen of scrollen nu goed werkt:-->
+        <textarea disabled id="fake-post-tot">
+        Natuurlijk, @geertwilderspvv
+        Telkens een test doen kan heel vervelend zijn.
+        Maar ik hoop ook op respect voor al die hartpatiënten waarvan operaties nu worden afgebeld. 
+        Zij staan misschien niet te demonstreren, maar voor hen is deze nieuwe golf lood- en loodzwaar.
+        </textarea>
+        <textarea disabled id="fake-post-tot">
+        Natuurlijk, @geertwilderspvv
+        Telkens een test doen kan heel vervelend zijn.
+        Maar ik hoop ook op respect voor al die hartpatiënten waarvan operaties nu worden afgebeld. 
+        Zij staan misschien niet te demonstreren, maar voor hen is deze nieuwe golf lood- en loodzwaar.
+        </textarea>
+        <textarea disabled id="fake-post-tot">
+        Natuurlijk, @geertwilderspvv
+        Telkens een test doen kan heel vervelend zijn.
+        Maar ik hoop ook op respect voor al die hartpatiënten waarvan operaties nu worden afgebeld. 
+        Zij staan misschien niet te demonstreren, maar voor hen is deze nieuwe golf lood- en loodzwaar.
+      </textarea
+        >
+      </div>
+
+      <button class="butaccount" onclick="window.location.href='/account.html'">
+        Account
+      </button>
+      <button class="buttonpost" id="myBtn">+</button>
+    </div>
+  </body>
+
+  <!-- Hier wordt er aangegeven dat het aankomende stukje is geschreven in JavaScript -->
+  <script>
+    // Hier wordt gezegd dat het venstertje gelezen moet worden
+    var modal = document.getElementById("myModal");
+
+    // Hier wordt gezegd dat het knopje wat het venstertje moet openen gelezen moet worden
+    var btn = document.getElementById("myBtn");
+
+    // Hier wordt gezegd dat het knopje wat het venstertje moet sluiten gelezen moet worden
+    var span = document.getElementsByClassName("close")[0];
+    var posttekst = document.getElementById("post-tekst");
+
+    var B_knop = document.getElementById("B-knop");
+    var I_knop = document.getElementById("I-knop");
+    var U_knop = document.getElementById("U-knop");
+
+    // Hier wordt aangegeven dat het venstertje geopent moet worden zodra er op het '+' knpje wordt geklikt
+    btn.onclick = function () {
+      modal.style.display = "block";
+    };
+
+    // Hier wordt aangegeven dat het venstertje gesloten moet worden zodra er op het 'x' knpje wordt geklikt
+    span.onclick = function () {
+      modal.style.display = "none";
+    };
+
+    // Hier wordt aangegeven dat het venstertje gesloten moet worden zodra er op een plek buiten het venster wordt geklikt
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    };
+
+    B_knop.onclick = function () {
+      if (posttekst.style.fontWeight == "bold") {
+        posttekst.style.fontWeight = "normal";
+      } else {
+        posttekst.style.fontWeight = "bold";
+      }
+    };
+
+    I_knop.onclick = function () {
+      if (posttekst.style.fontStyle == "italic") {
+        posttekst.style.fontStyle = "normal";
+      } else {
+        posttekst.style.fontStyle = "italic";
+      }
+    };
+
+    U_knop.onclick = function () {
+      if (posttekst.style.textDecoration == "underline") {
+        posttekst.style.textDecoration = "none";
+      } else {
+        posttekst.style.textDecoration = "underline";
+      }
+    };
+  </script>
 </html>
