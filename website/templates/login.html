@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meta - Login-page</title>
+    <link
+      rel="shortcut icon"
+      type="img/png"
+      href="{{ url_for('static', filename='images/Favicon.png')}}"
+    />
+    <link
+      rel="STYLESHEET"
+      href="{{ url_for('static', filename='css/index.css')}}"
+      type="text/css"
+    />
+  </head>
+
+  <body>
+    <div class="center">
+      <div class="container login">
+        <!--Hieronde wordt de titel "Login" gegeven en word de email class gemaakt. Deze hebben vereisten-->
+        <div class="kopje-text">Login</div>
+        <form method="POST">
+          <div class="data">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              placeholder="voorbeeld@voorbeeld.nl"
+              required
+            />
+          </div>
+          <div class="data">
+            <!--Hieronder wordt het wachtwoord invoeren weergegeven. Ook deze hebben verschillende vereisten-->
+            <label for="password">Wachtwoord</label>
+            <input
+              type="password"
+              class="form-conrol"
+              id="password"
+              name="password"
+              placeholder="Wachtwoord"
+              required
+            />
+          </div>
+
+          <div class="box">
+            <button type="submit" class="btn btn-primary">Login</button>
+          </div>
+        </form>
+        <!--Mocht je nog geen account hebben, kun je door middel van de volgende link verwezen worden naar het register/signup scherm-->
+        <br />
+        <div style="text-align: center">
+          Nog geen account <a href="/sign-up">Maak er één!</a>
+        </div>
+        <br />
+      </div>
+    </div>
+  </body>
+</html>

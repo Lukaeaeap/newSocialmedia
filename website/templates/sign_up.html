@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meta - register</title>
+    <link rel="shortcut icon" type="img/png" href="/images/Favicon.png" />
+    <link
+      rel="STYLESHEET"
+      href="{{ url_for('static', filename='css/index.css')}}"
+    />
+  </head>
+
+  <body>
+    <div class="center">
+      <div class="container registervierkant">
+        <div class="kopje-text">Registreer</div>
+        <form method="POST">
+          <div class="data">
+            <!--Hieronder moet je je voornaam invullen-->
+            <label for="firstName">Voornaam</label>
+            <input
+              type="text"
+              class="form-control"
+              id="firstName"
+              name="firstName"
+              placeholder="Voornaam"
+              required
+            />
+          </div>
+          <div class="data">
+            <label for="email">Email</label>
+            <!--Hieronder moet je je emailadress invullen-->
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              placeholder="voorbeeld@voorbeeld.nl"
+              required
+            />
+          </div>
+          <div class="data">
+            <label for="password1">Wachtwoord</label>
+            <!--Hieronder moet je je wachtwoord invullen-->
+            <input
+              type="password"
+              class="form-control"
+              id="password1"
+              name="password1"
+              placeholder="Wachtwoord"
+              required
+            />
+          </div>
+          <div class="data">
+            <label for="password2">Wachtwoord (bevestiging)</label>
+            <!--Hieronder moet je je wachtwoord opnieuw invullen-->
+            <input
+              type="password"
+              class="form-control"
+              id="password2"
+              name="password2"
+              placeholder="Bevestig wachtwoord"
+              required
+            />
+          </div>
+
+          <div class="box">
+            <button type="submit" class="btn btn-primary">Registreer</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
