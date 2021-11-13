@@ -4,7 +4,6 @@ Om de website weer te geven gebruik dan de live server extensie. Host hiermee de
 
 http://127.0.0.1:5500/Dashboard.html
 
-
 http://127.0.0.1:5500/index.html
 
 Door Luuk, Rana en Micha
