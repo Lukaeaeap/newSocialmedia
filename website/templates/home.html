@@ -1,44 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Meta</title>
-    <link rel="shortcut icon" type="img/png" href="/images/Favicon.png" />
-    <link rel="STYLESHEET" href="css/index.css" type="text/css" />
-  </head>
-
-  <body>
+{% extends "base.html" %}{% block title %}Login{% endblock %} {% block content
+  %}
     <!--Hieronder is de class waarin we onze menubalk hebben. -->
 
     <div class="header">
       <div class="container">
-        <div class="taskbar">
-          <img
-            src="/images/Logo-website.jpg"
-            alt="Logo van de website als home knop"
-            class="imgHome"
-            width="70px"
-            height="70px"
-            onclick="window.location.href='Dashboard.html'"
-          />
-          <!-- Hier wordt het venstertje aangemaakt -->
-          <div id="myModal" class="modal">
-            <!-- Hier wordt de inhoud van het venster weergeven -->
-            <div class="modal-content">
-              <span class="close">&times;</span>
-              <textarea form id="post-tekst"> </textarea>
-              <button class="buttoninpost" id="posten1">Post</button>
-              <button class="B-knop" id="B-knop">B</button>
-              <button class="I-knop" id="I-knop">I</button>
-              <button class="U-knop" id="U-knop">U</button>
-            </div>
-          </div>
-        </div>
-
+        
         <!---Hier wordt de tekst en buttons onder de taakbalk weergegeven-->
+
         <div>
-          <h1 class="Welkom">Welkom bij Meta!</h1>
+          <h1 class="Welkom">Welkom bij Meta, {{current_user.first_name}}!</h1>
         </div>
 
         <textarea disabled id="fake-post1">
@@ -74,11 +44,11 @@
       </textarea
         >
       </div>
-
-      <button class="butaccount" onclick="window.location.href='/account.html'">
-        Account
-      </button>
+      
       <button class="buttonpost" id="myBtn">+</button>
+      <a id="account" href="/account"><button class="butaccount">Account</button></a>
+      <a id="logout" href="/logout"><button class="butlogout">Logout</button></a>
+
     </div>
   </body>
 
@@ -139,4 +109,4 @@
       }
     };
   </script>
-</html>
+  {% endblock %}

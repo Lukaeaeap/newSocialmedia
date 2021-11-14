@@ -117,30 +117,21 @@ form .data input {
     cursor: pointer;
 }
 
+.imgHome:hover {
+    content:url("/static/images/Favicon.png");
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
 /* Hiermee veranderd de kleur als je met je muis over het vakje gaat*/
 .taskbar:hover {
     background-color: whitesmoke;
     color: black
 }
 
-.buttonpost {
-    color: black;
-    border-color: #cdebf9;
-    text-align: center;
-    padding: 20px 35px;
-    font-size: 18px;
-    width: 97px;
-    text-decoration: none;
-    cursor: pointer;
-    background-color: #cdebf9;
-    cursor: pointer;
-    border: 10px;
-    border-radius: 15px;
-    position: fixed;
-    bottom: 80px;
-    right: 10px;
 
-}
 
 /* Dit is het venstertje wat opkomt als je op de '+' klikt om een post aan te maken */
 .modal {
@@ -427,6 +418,24 @@ span {
     display: none;
 }
 
+.buttonpost {
+    color: black;
+    border-color: #cdebf9;
+    text-align: center;
+    padding: 20px 35px;
+    font-size: 18px;
+    width: 97px;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #cdebf9;
+    cursor: pointer;
+    border: 10px;
+    border-radius: 15px;
+    position: fixed;
+    bottom: 150px;
+    right: 10px;
+
+}
 /*Hieronder is de button gemaakt die op de homepage rechtsonder zichtbaar is, genaamd account*/
 .butaccount {
     border-color: #cdebf9;
@@ -438,8 +447,23 @@ span {
     padding: 21px 21px;
     cursor: pointer;
     position: fixed;
+    bottom: 80px;
+    right: 10px;
+}
+
+.butlogout {
+    border-color: #cdebf9;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    color: black;
+    background: #cdebf9;
+    padding: 21px 21px;
+    cursor: pointer;
+    position: fixed;
     bottom: 10px;
     right: 10px;
+    width: 97px;
 }
 
 .Welkom {

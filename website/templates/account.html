@@ -1,103 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Meta - account</title>
-    <link rel="shortcut icon" type="img/png" href="/images/Favicon.png" />
-    <link rel="stylesheet" href="css/index.css" />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.0.7/css/all.css"
-    />
-  </head>
-
-  <body>
-    <div class="header">
-      <div class="container">
-        <div class="taskbar">
-          <img
-            src="/images/Logo-website.jpg"
-            alt="Logo van de website als home knop"
-            class="imgHome"
-            width="70px"
-            height="70px"
-            onclick="window.location.href='Dashboard.html'"
-          />
+{% extends "base.html" %}{% block title %}Login{% endblock %} {% block content
+%}
+<div class="header">
+  <div class="container">
+    <div class="container-account">
+      <div class="leftbox">
+        <nav>
+          <a-account onclick="tabs(0)" class="tab active">
+            <i class="fa fa-user"></i>
+          </a-account>
+          <a-account onclick="tabs(1)" class="tab">
+            <i class="fas fa-envelope"></i>
+          </a-account>
+          <a-account onclick="tabs(2)" class="tab">
+            <i class="fas fa-info-circle"></i>
+          </a-account>
+        </nav>
+      </div>
+      <div class="rightbox-account">
+        <div class="profile tabShow">
+          <h1>Persoons informatie</h1>
+          <h2>Voornaam</h2>
+          <input type="text" class="input" value="Micha" />
+          <h2>Achternaam</h2>
+          <input type="text" class="input" value="Verwey" />
+          <h2>Geboortedatum</h2>
+          <input type="text" class="input" value="22 december 2004" />
+          <button class="update">Update</button>
         </div>
 
-        <div class="container-account">
-          <div class="leftbox">
-            <nav>
-              <a-account onclick="tabs(0)" class="tab active">
-                <i class="fa fa-user"></i>
-              </a-account>
-              <a-account onclick="tabs(1)" class="tab">
-                <i class="fas fa-envelope"></i>
-              </a-account>
-              <a-account onclick="tabs(2)" class="tab">
-                <i class="fas fa-info-circle"></i>
-              </a-account>
-            </nav>
-          </div>
-          <div class="rightbox-account">
-            <div class="profile tabShow">
-              <h1>Persoons informatie</h1>
-              <h2>Voornaam</h2>
-              <input type="text" class="input" value="Micha" />
-              <h2>Achternaam</h2>
-              <input type="text" class="input" value="Verwey" />
-              <h2>Geboortedatum</h2>
-              <input type="text" class="input" value="22 december 2004" />
-              <button class="update">Update</button>
-            </div>
-
-            <div class="settings tabShow">
-              <h1>Inloggegevens</h1>
-              <h2>Gebruikersnaam</h2>
-              <input type="text" class="input" value="Michaa" />
-              <h2>Emailadres</h2>
-              <input type="text" class="input" value="205621@unic-utrecht.nl" />
-              <h2>Wachtwoord</h2>
-              <input type="password" class="input" value="wachtwoord" />
-              <button class="update">Update</button>
-            </div>
-            <div class="privacy tabShow">
-              <h1>Informatie over privacy van Meta</h1>
-              <h2>Gebruikersnaam</h2>
-              <input type="text" class="input" value="Michaa" />
-              <h2>Emailadres</h2>
-              <input type="text" class="input" value="205621@unic-utrecht.nl" />
-              <h2>Wachtwoord</h2>
-              <input type="password" class="input" value="wachtwoord" />
-            </div>
-          </div>
-
-          <!-- Hier wordt er aangegeven dat het aankomende stukje is geschreven in JavaScript -->
-          <script
-            src="https://code.jquery.com/jquery-3.6.0.js"
-            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-            crossorigin="anonymous"
-          ></script>
-          <script>
-            const tabBtn = document.querySelectorAll(".tab");
-            const tab = document.querySelectorAll(".tabShow");
-
-            function tabs(panelIndex) {
-              tab.forEach(function (node) {
-                node.style.display = "none";
-              });
-              tab[panelIndex].style.display = "block";
-            }
-            tabs(0);
-          </script>
-          <script>
-            $(".tab").click(function () {
-              $(this).addClass("active").siblings().removeClass("active");
-            });
-          </script>
+        <div class="settings tabShow">
+          <h1>Inloggegevens</h1>
+          <h2>Gebruikersnaam</h2>
+          <input type="text" class="input" value="Michaa" />
+          <h2>Emailadres</h2>
+          <input type="text" class="input" value="205621@unic-utrecht.nl" />
+          <h2>Wachtwoord</h2>
+          <input type="password" class="input" value="wachtwoord" />
+          <button class="update">Update</button>
+        </div>
+        <div class="privacy tabShow">
+          <h1>Informatie over privacy van Meta</h1>
+          <h2>Gebruikersnaam</h2>
+          <input type="text" class="input" value="Michaa" />
+          <h2>Emailadres</h2>
+          <input type="text" class="input" value="205621@unic-utrecht.nl" />
+          <h2>Wachtwoord</h2>
+          <input type="password" class="input" value="wachtwoord" />
         </div>
       </div>
+
+      <!-- Hier wordt er aangegeven dat het aankomende stukje is geschreven in JavaScript -->
+      <script
+        src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"
+      ></script>
+      <script>
+        const tabBtn = document.querySelectorAll(".tab");
+        const tab = document.querySelectorAll(".tabShow");
+
+        function tabs(panelIndex) {
+          tab.forEach(function (node) {
+            node.style.display = "none";
+          });
+          tab[panelIndex].style.display = "block";
+        }
+        tabs(0);
+      </script>
+      <script>
+        $(".tab").click(function () {
+          $(this).addClass("active").siblings().removeClass("active");
+        });
+      </script>
     </div>
-  </body>
-</html>
+  </div>
+</div>
+{% endblock %}

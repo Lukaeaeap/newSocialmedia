@@ -3,8 +3,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
     <!--The css and looks of bootstrap-->
     <link
       rel="stylesheet"
@@ -18,31 +18,56 @@
       crossorigin="anonymous"
     />
 
+    <!--Importing our own css and images-->
+    <link
+      rel="shortcut icon"
+      type="img/png"
+      href="{{ url_for('static', filename='images/Favicon.png')}}"
+    />
+    <link
+      rel="STYLESHEET"
+      href="{{ url_for('static', filename='css/index.css')}}"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.7/css/all.css"
+    />
+
     <title>{% block title %}Home{% endblock %}</title>
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbar"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbar">
-        <div class="navbar-nav">
-          {% if user.is_authenticated %}
-          <a class="nav-item nav-link" id="home" href="/">Home</a>
-          <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
-          {% else %}
-          <a class="nav-item nav-link" id="login" href="/login">Login</a>
-          <a class="nav-item nav-link" id="sign_up" href="/sign-up">Sign up</a>
-          {% endif %}
+    <div class="taskbar">
+      {% if user.is_authenticated %}
+      <a id="home" href="/"
+        ><img
+          src="static/images/Logo-website.jpg"
+          alt="Logo van de website
+            als home knop"
+          class="imgHome"
+          width="70px"
+          height="70px"
+      /></a>
+
+      <!-- Hier wordt het venstertje aangemaakt -->
+      <div id="myModal" class="modal">
+        <!-- Hier wordt de inhoud van het venster weergeven -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <textarea form id="post-tekst"> </textarea>
+          <button class="buttoninpost" id="posten1">Post</button>
+          <button class="B-knop" id="B-knop">B</button>
+          <button class="I-knop" id="I-knop">I</button>
+          <button class="U-knop" id="U-knop">U</button>
         </div>
       </div>
-    </nav>
+
+      {% else %}
+      <a class="nav-item nav-link" id="login" href="/login">Login</a>
+      <a class="nav-item nav-link" id="sign_up" href="/sign-up">Sign up</a>
+      {% endif %}
+    </div>
     {% with messages = get_flashed_messages(with_categories=true) %} {% if
     messages %} {% for category, message in messages %} {% if category ==
     'error'%}

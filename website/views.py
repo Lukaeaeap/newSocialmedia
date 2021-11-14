@@ -37,3 +37,9 @@ def delete_note():
             db.session.delete(note)
             db.session.commit()
     return jsonify({})
+
+
+@views.route('/account', methods=['GET'])
+@login_required
+def account():
+    return render_template("account.html", user=current_user)
