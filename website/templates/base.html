@@ -55,11 +55,15 @@
         <!-- Hier wordt de inhoud van het venster weergeven -->
         <div class="modal-content">
           <span class="close">&times;</span>
-          <textarea form id="post-tekst"> </textarea>
-          <button class="buttoninpost" id="posten1">Post</button>
-          <button class="B-knop" id="B-knop">B</button>
-          <button class="I-knop" id="I-knop">I</button>
-          <button class="U-knop" id="U-knop">U</button>
+          <form method="POST">
+            <textarea name="note" id="note" class="form-control"> </textarea>
+            <button class="B-knop" id="B-knop">B</button>
+            <button class="I-knop" id="I-knop">I</button>
+            <button class="U-knop" id="U-knop">U</button>
+            <button type="submit" class="buttoninpost" id="posten1">
+              Post
+            </button>
+          </form>
         </div>
       </div>
 

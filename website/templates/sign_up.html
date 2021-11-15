@@ -1,9 +1,21 @@
-{% extends "base.html" %}{% block title %}Login{% endblock %} {% block content
+{% extends "base.html" %}{% block title %}Meta - register{% endblock %} {% block content
   %}
     <div class="center">
       <div class="container registervierkant">
         <div class="kopje-text">Registreer</div>
         <form method="POST">
+          <div class="data">
+            <!--Hieronder moet je je gebruikersnaam invullen-->
+            <label for="userName">Gebruikersnaam</label>
+            <input
+              type="text"
+              class="form-control"
+              id="userName"
+              name="userName"
+              placeholder="Gebruikersnaam"
+              required
+            />
+          </div>
           <div class="data">
             <!--Hieronder moet je je voornaam invullen-->
             <label for="firstName">Voornaam</label>
@@ -13,6 +25,30 @@
               id="firstName"
               name="firstName"
               placeholder="Voornaam"
+              required
+            />
+          </div>
+          <div class="data">
+            <!--Hieronder moet je je achternaam invullen-->
+            <label for="lastName">Achternaam</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lastName"
+              name="lastName"
+              placeholder="Achternaam"
+              required
+            />
+          </div>
+          <div class="data">
+            <!--Hieronder moet je je geboortedatum invullen-->
+            <label for="birthDate">Geboortedatum</label>
+            <input
+              type="date"
+              class="form-control"
+              id="birthDate"
+              name="birthDate"
+              placeholder="geboortedatum"
               required
             />
           </div>

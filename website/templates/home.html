@@ -1,4 +1,4 @@
-{% extends "base.html" %}{% block title %}Login{% endblock %} {% block content
+{% extends "base.html" %}{% block title %}Meta{% endblock %} {% block content
   %}
     <!--Hieronder is de class waarin we onze menubalk hebben. -->
 
@@ -10,7 +10,11 @@
         <div>
           <h1 class="Welkom">Welkom bij Meta, {{current_user.first_name}}!</h1>
         </div>
-
+        {% for note in user.notes %}
+        <textarea disabled id="fake-post1">
+          {{ note.data }}
+          </textarea>
+        {% endfor %}
         <textarea disabled id="fake-post1">
         Vanaf december kunnen 80-plussers een ‘booster’-prik krijgen, net als inwoners van zorginstellingen en zorgmedewerkers. Het gaat om een extra vaccinatie om de werking van het vaccin te versterken. Vanaf januari kunnen mensen tussen 60 en 80 jaar die krijgen, daarna iedereen die dat wil. 
         </textarea>

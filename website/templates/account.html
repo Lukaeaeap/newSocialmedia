@@ -1,5 +1,5 @@
-{% extends "base.html" %}{% block title %}Login{% endblock %} {% block content
-%}
+{% extends "base.html" %}{% block title %}Meta - account{% endblock %} {% block
+content %}
 <div class="header">
   <div class="container">
     <div class="container-account">
@@ -20,22 +20,34 @@
         <div class="profile tabShow">
           <h1>Persoons informatie</h1>
           <h2>Voornaam</h2>
-          <input type="text" class="input" value="Micha" />
+          <input
+            type="text"
+            class="input"
+            value="{{current_user.first_name}}"
+          />
           <h2>Achternaam</h2>
-          <input type="text" class="input" value="Verwey" />
+          <input type="text" class="input" value="{{current_user.last_name}}" />
           <h2>Geboortedatum</h2>
-          <input type="text" class="input" value="22 december 2004" />
+          <input
+            type="date"
+            class="input"
+            value="{{current_user.birth_date.strftime('%Y-%m-%d')}}"
+          />
           <button class="update">Update</button>
         </div>
 
         <div class="settings tabShow">
           <h1>Inloggegevens</h1>
           <h2>Gebruikersnaam</h2>
-          <input type="text" class="input" value="Michaa" />
+          <input type="text" class="input" value="{{current_user.user_name}}" />
           <h2>Emailadres</h2>
-          <input type="text" class="input" value="205621@unic-utrecht.nl" />
+          <input type="text" class="input" value="{{current_user.email}}" />
           <h2>Wachtwoord</h2>
-          <input type="password" class="input" value="wachtwoord" />
+          <input
+            type="password"
+            class="input"
+            value="{{current_user.password}}"
+          />
           <button class="update">Update</button>
         </div>
         <div class="privacy tabShow">
