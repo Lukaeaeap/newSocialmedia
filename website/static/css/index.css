@@ -276,12 +276,10 @@ form .data input {
     font-family: Arial;
     background-color: white;
     font-weight: bold;
-    resize: none;
     /*Dit zorgt ervoor dat je de grootte van het tekstvak niet kunt veranderen via de site */
-    height: 190px;
     width: 60%;
     margin: 1% 20%;
-    padding: 15px;
+    padding: 30px;
     border-radius: 20px;
 }
 

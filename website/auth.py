@@ -13,9 +13,9 @@ def login():
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
-
         # Filter the user for the email, and look at the first email (which is unique so there is only one).
         user = User.query.filter_by(email=email).first()
+
         if user:
             if check_password_hash(user.password, password):
                 # flash('Logged in successfully!', category='succes')
@@ -49,11 +49,14 @@ def sign_up():
         creation_date = request.form.get('creation_date')
 
         user = User.query.filter_by(email=email).first()
+        user_check2 = User.query.filter_by(user_name=user_name).first()
 
         if user:
             flash('Email already exists', category='error')
-
-        if len(email) < 4:
+        elif user_check2:
+            flash('Username already exists', category='error')
+            print("error")
+        elif len(email) < 4:
             flash('Email must be longer than 4 characters', category='error')
         elif len(first_name) < 2:
             flash('First name must be longer than 1 character', category='error')
