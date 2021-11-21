@@ -22,6 +22,7 @@ class Note(db.Model):
     date = db.Column(db.DateTime(timezone=True), nullable=False, default=datetime.utcnow)
     # Get the user id out of the database part of the user, foreign keys use lowercase
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user = db.relationship('User', back_populates='notes')
 
 
 class User(db.Model, UserMixin):
@@ -35,4 +36,4 @@ class User(db.Model, UserMixin):
     birth_date = db.Column(MyDateTime)
     creation_date = db.Column(db.DateTime(timezone=True), nullable=False, default=datetime.utcnow)
     # The notes that a user has created, use for relationships a capital
-    notes = db.relationship('Note')
+    notes = db.relationship('Note', back_populates='user')
