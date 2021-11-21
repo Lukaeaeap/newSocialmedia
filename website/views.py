@@ -7,12 +7,11 @@ import json
 
 views = Blueprint('views', __name__)
 
-# The home page for www.website.com/ the slash means it is the home page since we called it that.
-
 
 @views.route('/', methods=['GET', 'POST'])
 @login_required
 def home():
+    # The home page for www.website.com/ the slash means it is the home page since we called it that.
     if request.method == 'POST':
         note = request.form.get('note')
         note_text_check = Note.query.filter_by(data=note).first()

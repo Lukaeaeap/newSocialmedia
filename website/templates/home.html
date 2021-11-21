@@ -9,37 +9,23 @@
         <br />
         <h1 class="Welkom">Welkom bij Meta, {{current_user.first_name}}!</h1>
       </div>
+
       <!-- All posts from the current user: -->
       <br />
-      <h4>Your posts</h4>
+      <h4>Jou posts</h4>
       <br />
-      {% for note in user.notes %}
-      <button type="button" class="close" onClick="deleteNote({{note.id}})">
-        <span aria-hidden="true">&times;</span>
-      </button>
-
-      <div id="fake-post2">{{ note.data }}</div>
-      <br />
-      <script>
-        console.log("test: " + {{note.id}});
-      </script>
-      {% endfor %}
-
-      <!-- All posts that are in the database: -->
-      <br />
-      <h4>Everyones posts</h4>
-      <br />
-      {% for notes in posts %}
+      {% for notes in user.notes %}
       <ul style="list-style-type: none">
         <li>
           <span class="left">
             {{ notes.user.first_name}} {{notes.user.last_name}}
             <strong>·</strong> <strong>@{{notes.user.user_name}}</strong>
-            <strong>·</strong>
-            {{notes.date.strftime('%a %d %B')}}
+            <strong>·</strong> {{notes.date.strftime('%a %d %B')}}
+            <strong>·</strong> {{notes.date.strftime('%H:%M')}}
             <!--for the strtime function a capital letter means short version of a written text so %a is the day of the week but short 
-              and %B is the full name of the month--> </span
-          ><span class="right"
+              and %B is the full name of the month-->
+          </span>
+          <span class="right"
             ><a type="button" class="text-button">Edit post</a>
             <strong>·</strong>
             <a
@@ -47,8 +33,43 @@
               class="text-button"
               onClick="deleteNote({{notes.id}})"
               >Delete</a
-            ></span
-          >
+            >
+          </span>
+
+          <div id="fake-post2">{{ notes.data }}</div>
+          <!--<script>console.log("test: " + {{notes.id}})</script>-->
+        </li>
+      </ul>
+      <script>
+        console.log("test: " + {{notes.id}});
+      </script>
+      {% endfor %}
+
+      <!-- All posts that are in the database: -->
+      <br />
+      <h4>Iedereens posts</h4>
+      <br />
+      {% for notes in posts %}
+      <ul style="list-style-type: none">
+        <li>
+          <span class="left">
+            {{ notes.user.first_name}} {{notes.user.last_name}}
+            <strong>·</strong> <strong>@{{notes.user.user_name}}</strong>
+            <strong>·</strong> {{notes.date.strftime('%a %d %B')}}
+            <strong>·</strong> {{notes.date.strftime('%H:%M')}}
+            <!--for the strtime function a capital letter means short version of a written text so %a is the day of the week but short 
+              and %B is the full name of the month-->
+          </span>
+          <span class="right"
+            ><a type="button" class="text-button">Edit post</a>
+            <strong>·</strong>
+            <a
+              type="button"
+              class="text-button"
+              onClick="deleteNote({{notes.id}})"
+              >Delete</a
+            >
+          </span>
 
           <div id="fake-post-tot">{{ notes.data }}</div>
           <!--<script>console.log("test: " + {{notes.id}})</script>-->
