@@ -1,117 +1,125 @@
-{% extends "base.html" %}{% block title %}Meta{% endblock %} {% block content
-  %}
-    <!--Hieronder is de class waarin we onze menubalk hebben. -->
+{% extends "base.html" %}{% block title %}Meta{% endblock %} {% block content %}
+<!--Hieronder is de class waarin we onze menubalk hebben. -->
 
-    <div class="header">
-      <div class="container">
-        
-        <!---Hier wordt de tekst en buttons onder de taakbalk weergegeven-->
-
-        <div>
-          <h1 class="Welkom">Welkom bij Meta, {{current_user.first_name}}!</h1>
-        </div>
-        {% for note in user.notes %}
-        <textarea disabled id="fake-post2">
-          {{ note.data }}
-          </textarea>
-        {% endfor %}
-        
-        <textarea disabled id="fake-post1">
-        Vanaf december kunnen 80-plussers een ‘booster’-prik krijgen, net als inwoners van zorginstellingen en zorgmedewerkers. Het gaat om een extra vaccinatie om de werking van het vaccin te versterken. Vanaf januari kunnen mensen tussen 60 en 80 jaar die krijgen, daarna iedereen die dat wil. 
-        </textarea>
-        <textarea disabled id="fake-post2">
-        Natuurlijk, @geertwilderspvv
-        Telkens een test doen kan heel vervelend zijn.
-        Maar ik hoop ook op respect voor al die hartpatiënten waarvan operaties nu worden afgebeld. 
-        Zij staan misschien niet te demonstreren, maar voor hen is deze nieuwe golf lood- en loodzwaar.
-        </textarea>
-        <textarea disabled id="fake-post3">
-        Terugreis naar Utrecht Terwijde is onmogelijk. Servicepunt op Utrecht Centraal weigert alternatief vervoer te regelen. Draaien de verantwoordelijkheid om en zeggen dat ik maar op toegankelijke trein moet wachten. “Dit zijn de regels!” Hoe vinden jullie zelf dat het gaat NS? 
-        </textarea>
-        <!--om te testen of scrollen nu goed werkt:-->
-        <textarea disabled id="fake-post-tot">
-        Natuurlijk, @geertwilderspvv
-        Telkens een test doen kan heel vervelend zijn.
-        Maar ik hoop ook op respect voor al die hartpatiënten waarvan operaties nu worden afgebeld. 
-        Zij staan misschien niet te demonstreren, maar voor hen is deze nieuwe golf lood- en loodzwaar.
-        </textarea>
-        <textarea disabled id="fake-post-tot">
-        Natuurlijk, @geertwilderspvv
-        Telkens een test doen kan heel vervelend zijn.
-        Maar ik hoop ook op respect voor al die hartpatiënten waarvan operaties nu worden afgebeld. 
-        Zij staan misschien niet te demonstreren, maar voor hen is deze nieuwe golf lood- en loodzwaar.
-        </textarea>
-        <textarea disabled id="fake-post-tot">
-        Natuurlijk, @geertwilderspvv
-        Telkens een test doen kan heel vervelend zijn.
-        Maar ik hoop ook op respect voor al die hartpatiënten waarvan operaties nu worden afgebeld. 
-        Zij staan misschien niet te demonstreren, maar voor hen is deze nieuwe golf lood- en loodzwaar.
-      </textarea
-        >
+<div class="header">
+  <div class="container">
+    <!---Hier wordt de tekst en buttons onder de taakbalk weergegeven-->
+    <div class="home">
+      <div>
+        <br />
+        <h1 class="Welkom">Welkom bij Meta, {{current_user.first_name}}!</h1>
       </div>
-      
-      <button class="buttonpost" id="myBtn">+</button>
-      <a id="account" href="/account"><button class="butaccount">Account</button></a>
-      <a id="logout" href="/logout"><button class="butlogout">Logout</button></a>
+      <!-- All posts from the current user: -->
+      <br />
+      <h4>Your posts</h4>
+      <br />
+      {% for note in user.notes %}
+      <button type="button" class="close" onClick="deleteNote({{note.id}})">
+        <span aria-hidden="true">&times;</span>
+      </button>
 
+      <div id="fake-post2">{{ note.data }}</div>
+      <br />
+      <script>
+        console.log("test: " + {{note.id}});
+      </script>
+      {% endfor %}
+
+      <!-- All posts that are in the database: -->
+      <br />
+      <h4>Everyones posts</h4>
+      <br />
+      {% for notes in posts %}
+      <ul style="list-style-type: none">
+        <li>
+          <span class="left">
+            {{ notes.user.first_name}} {{notes.user.last_name}}
+            <strong>·</strong> <strong>@{{notes.user.user_name}}</strong>
+            <strong>·</strong>
+            {{notes.date.strftime('%a %d %B')}}
+            <!--for the strtime function a capital letter means short version of a written text so %a is the day of the week but short 
+              and %B is the full name of the month--> </span
+          ><span class="right"
+            ><a type="button" class="text-button">Edit post</a>
+            <strong>·</strong>
+            <a
+              type="button"
+              class="text-button"
+              onClick="deleteNote({{notes.id}})"
+              >Delete</a
+            ></span
+          >
+
+          <div id="fake-post-tot">{{ notes.data }}</div>
+          <!--<script>console.log("test: " + {{notes.id}})</script>-->
+        </li>
+      </ul>
+
+      {% endfor %}
     </div>
-  </body>
+  </div>
+  <button class="buttonpost" id="myBtn">+</button>
+  <a id="account" href="/account"
+    ><button class="butaccount">Account</button></a
+  >
+  <a id="logout" href="/logout"><button class="butlogout">Logout</button></a>
+</div>
 
-  <!-- Hier wordt er aangegeven dat het aankomende stukje is geschreven in JavaScript -->
-  <script>
-    // Hier wordt gezegd dat het venstertje gelezen moet worden
-    var modal = document.getElementById("myModal");
+<!-- Hier wordt er aangegeven dat het aankomende stukje is geschreven in JavaScript om het post venster te maken -->
+<script>
+  // Hier wordt gezegd dat het venstertje gelezen moet worden
+  var modal = document.getElementById("myModal");
 
-    // Hier wordt gezegd dat het knopje wat het venstertje moet openen gelezen moet worden
-    var btn = document.getElementById("myBtn");
+  // Hier wordt gezegd dat het knopje wat het venstertje moet openen gelezen moet worden
+  var btn = document.getElementById("myBtn");
 
-    // Hier wordt gezegd dat het knopje wat het venstertje moet sluiten gelezen moet worden
-    var span = document.getElementsByClassName("close")[0];
-    var posttekst = document.getElementById("post-tekst");
+  // Hier wordt gezegd dat het knopje wat het venstertje moet sluiten gelezen moet worden
+  var span = document.getElementsByClassName("close")[0];
+  var posttekst = document.getElementById("post-tekst");
 
-    var B_knop = document.getElementById("B-knop");
-    var I_knop = document.getElementById("I-knop");
-    var U_knop = document.getElementById("U-knop");
+  var B_knop = document.getElementById("B-knop");
+  var I_knop = document.getElementById("I-knop");
+  var U_knop = document.getElementById("U-knop");
 
-    // Hier wordt aangegeven dat het venstertje geopent moet worden zodra er op het '+' knpje wordt geklikt
-    btn.onclick = function () {
-      modal.style.display = "block";
-    };
+  // Hier wordt aangegeven dat het venstertje geopent moet worden zodra er op het '+' knpje wordt geklikt
+  btn.onclick = function () {
+    modal.style.display = "block";
+  };
 
-    // Hier wordt aangegeven dat het venstertje gesloten moet worden zodra er op het 'x' knpje wordt geklikt
-    span.onclick = function () {
+  // Hier wordt aangegeven dat het venstertje gesloten moet worden zodra er op het 'x' knpje wordt geklikt
+  span.onclick = function () {
+    modal.style.display = "none";
+  };
+
+  // Hier wordt aangegeven dat het venstertje gesloten moet worden zodra er op een plek buiten het venster wordt geklikt
+  window.onclick = function (event) {
+    if (event.target == modal) {
       modal.style.display = "none";
-    };
+    }
+  };
 
-    // Hier wordt aangegeven dat het venstertje gesloten moet worden zodra er op een plek buiten het venster wordt geklikt
-    window.onclick = function (event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    };
+  B_knop.onclick = function () {
+    if (posttekst.style.fontWeight == "bold") {
+      posttekst.style.fontWeight = "normal";
+    } else {
+      posttekst.style.fontWeight = "bold";
+    }
+  };
 
-    B_knop.onclick = function () {
-      if (posttekst.style.fontWeight == "bold") {
-        posttekst.style.fontWeight = "normal";
-      } else {
-        posttekst.style.fontWeight = "bold";
-      }
-    };
+  I_knop.onclick = function () {
+    if (posttekst.style.fontStyle == "italic") {
+      posttekst.style.fontStyle = "normal";
+    } else {
+      posttekst.style.fontStyle = "italic";
+    }
+  };
 
-    I_knop.onclick = function () {
-      if (posttekst.style.fontStyle == "italic") {
-        posttekst.style.fontStyle = "normal";
-      } else {
-        posttekst.style.fontStyle = "italic";
-      }
-    };
-
-    U_knop.onclick = function () {
-      if (posttekst.style.textDecoration == "underline") {
-        posttekst.style.textDecoration = "none";
-      } else {
-        posttekst.style.textDecoration = "underline";
-      }
-    };
-  </script>
-  {% endblock %}
+  U_knop.onclick = function () {
+    if (posttekst.style.textDecoration == "underline") {
+      posttekst.style.textDecoration = "none";
+    } else {
+      posttekst.style.textDecoration = "underline";
+    }
+  };
+</script>
+{% endblock %}
