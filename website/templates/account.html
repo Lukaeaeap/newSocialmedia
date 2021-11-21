@@ -14,6 +14,9 @@ content %}
           <a-account onclick="tabs(2)" class="tab">
             <i class="fas fa-info-circle"></i>
           </a-account>
+          <a-account onclick="tabs(3)" class="tab">
+            <i class="fas fa-key"></i>
+          </a-account>
         </nav>
       </div>
       <div class="rightbox-account">
@@ -49,7 +52,7 @@ content %}
         <div class="privacy tabShow">
           <h1>Informatie over privacy van Meta</h1>
           <h4>Belangrijk</h4>
-          <p>
+          <p style="margin-right: 50px">
             Wij verwerken en gebruiken uw gegevens om het contract uit te voeren
             en onze diensten te verlenen, om onze diensten en onze websites te
             verbeteren en aan te passen aan uw behoeften, om updates en upgrades
@@ -64,6 +67,37 @@ content %}
             voor de uitvoering van precontractuele maatregelen, bijvoorbeeld bij
             vragen over onze producten of diensten.
           </p>
+        </div>
+
+        <div class="password tabShow">
+          <h1>Inloggegevens</h1>
+          <h2>Oud wachtwoord</h2>
+          <input
+            dissable
+            type="password"
+            class="input"
+            placeholder="Oud wachtwoord"
+          />
+          <h2>Nieuw wachtwoord</h2>
+          <input
+            dissable
+            type="password"
+            class="input"
+            placeholder="Nieuw wachtwoord"
+          />
+
+          <h2>Herhaal nieuw wachtwoord</h2>
+          <input
+            dissable
+            type="password"
+            class="input"
+            placeholder="Herhaal nieuw wachtwoord"
+          />
+          <div class="submitbox">
+            <button type="submit" class="btn btn-primary">
+              Maak nieuw wachtwoord
+            </button>
+          </div>
         </div>
       </div>
 
