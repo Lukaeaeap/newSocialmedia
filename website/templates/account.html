@@ -68,35 +68,54 @@ content %}
             vragen over onze producten of diensten.
           </p>
         </div>
-
         <div class="password tabShow">
-          <h1>Inloggegevens</h1>
-          <h2>Oud wachtwoord</h2>
-          <input
-            dissable
-            type="password"
-            class="input"
-            placeholder="Oud wachtwoord"
-          />
-          <h2>Nieuw wachtwoord</h2>
-          <input
-            dissable
-            type="password"
-            class="input"
-            placeholder="Nieuw wachtwoord"
-          />
-
-          <h2>Herhaal nieuw wachtwoord</h2>
-          <input
-            dissable
-            type="password"
-            class="input"
-            placeholder="Herhaal nieuw wachtwoord"
-          />
-          <div class="submitbox">
-            <button type="submit" class="btn btn-primary">
-              Maak nieuw wachtwoord
-            </button>
+          <div id="password">
+            <form method="POST">
+              <h1>Wachtwoord veranderen</h1>
+              <div class="data">
+                <label for="password_old"><h2>Oud wachtwoord</h2></label>
+                <!--Hieronder moet je je oude wachtwoord invullen-->
+                <input
+                  type="password"
+                  id="password_old"
+                  name="password_old"
+                  class="input"
+                  placeholder="Oud wachtwoord"
+                  required
+                />
+              </div>
+              <div class="data">
+                <label for="password_new1"><h2>Nieuw wachtwoord</h2></label>
+                <!--Hieronder moet je je nieuwe wachtwoord invullen-->
+                <input
+                  type="password"
+                  id="password_new1"
+                  name="password_new1"
+                  class="input"
+                  placeholder="Nieuw wachtwoord"
+                  required
+                />
+              </div>
+              <div class="data">
+                <label for="password_new2"
+                  ><h2>Herhaal nieuw wachtwoord</h2></label
+                >
+                <!--Hieronder moet je je nieuwe wachtwoord opnieuw invullen-->
+                <input
+                  type="password"
+                  id="password_new2"
+                  name="password_new2"
+                  class="input"
+                  placeholder="Herhaal nieuw wachtwoord"
+                  required
+                />
+              </div>
+              <div class="submitbox">
+                <button type="submit" class="btn btn-primary">
+                  Maak nieuw wachtwoord
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>

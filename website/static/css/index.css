@@ -37,8 +37,8 @@ body {
 
 .text-button:hover,
 .text-button:focus {
-    text-decoration: none;
     cursor: pointer;
+    color: rgb(255, 116, 116);
     /* Dit zorgt ervoor dat je muis een pointer krijgt */
 }
 
