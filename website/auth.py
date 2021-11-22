@@ -91,21 +91,24 @@ def account():
         user = User.query.filter_by(email=current_user.email).first()
         if user:
             if check_password_hash(user.password, password_ol):
-                if password1 != password2:
-                    flash('Passwords do not match', category='error')
-                    pass
-                elif len(password1) < 7:
-                    flash('Password must be at least 7 characters', category='error')
-                    pass
+                if password_ol != password1:
+                    if password1 != password2:
+                        pass
+                    elif len(password1) < 7:
+                        flash('Password must be at least 7 characters', category='error')
+                        pass
+                    else:
+                        # Update the user to the database
+                        user_update = current_user
+                        user_update.password = generate_password_hash(password1, method='sha256')
+                        db.session.add(user_update)
+                        db.session.commit()
+                        login_user(user_update, remember=True)
+                        flash('Password updated', category='succes')
+                        return redirect(url_for('auth.account'))
                 else:
-                    # Update the user to the database
-                    user_update = current_user
-                    user_update.password = generate_password_hash(password1, method='sha256')
-                    db.session.add(user_update)
-                    db.session.commit()
-                    login_user(user_update, remember=True)
-                    flash('Password updated', category='succes')
-                    return redirect(url_for('auth.account'))
+                    flash('Passwords are the same', category='error')
+
             else:
                 flash('Old password incorrect', category='error')
     return render_template("account.html", user=current_user)

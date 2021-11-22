@@ -69,81 +69,81 @@ content %}
           </p>
         </div>
         <div class="password tabShow">
-          <div id="password">
-            <form method="POST">
+          <form method="POST" style="margin-right: 50px">
+            <div id="password">
               <h1>Wachtwoord veranderen</h1>
-              <div class="data">
-                <label for="password_old"><h2>Oud wachtwoord</h2></label>
-                <!--Hieronder moet je je oude wachtwoord invullen-->
-                <input
-                  type="password"
-                  id="password_old"
-                  name="password_old"
-                  class="input"
-                  placeholder="Oud wachtwoord"
-                  required
-                />
-              </div>
-              <div class="data">
-                <label for="password_new1"><h2>Nieuw wachtwoord</h2></label>
-                <!--Hieronder moet je je nieuwe wachtwoord invullen-->
-                <input
-                  type="password"
-                  id="password_new1"
-                  name="password_new1"
-                  class="input"
-                  placeholder="Nieuw wachtwoord"
-                  required
-                />
-              </div>
-              <div class="data">
-                <label for="password_new2"
-                  ><h2>Herhaal nieuw wachtwoord</h2></label
-                >
-                <!--Hieronder moet je je nieuwe wachtwoord opnieuw invullen-->
-                <input
-                  type="password"
-                  id="password_new2"
-                  name="password_new2"
-                  class="input"
-                  placeholder="Herhaal nieuw wachtwoord"
-                  required
-                />
-              </div>
-              <div class="submitbox">
-                <button type="submit" class="btn btn-primary">
-                  Maak nieuw wachtwoord
-                </button>
-              </div>
-            </form>
-          </div>
+            </div>
+            <div class="input">
+              <label for="password_old"><h2>Oud wachtwoord</h2></label>
+              <!--Hieronder moet je je oude wachtwoord invullen-->
+              <input
+                type="password"
+                id="password_old"
+                name="password_old"
+                class="input"
+                placeholder="Oud wachtwoord"
+                required
+              />
+            </div>
+            <div class="input">
+              <label for="password_new1"><h2>Nieuw wachtwoord</h2></label>
+              <!--Hieronder moet je je nieuwe wachtwoord invullen-->
+              <input
+                type="password"
+                id="password_new1"
+                name="password_new1"
+                class="input"
+                placeholder="Nieuw wachtwoord"
+                required
+              />
+            </div>
+            <div class="input">
+              <label for="password_new2"
+                ><h2>Herhaal nieuw wachtwoord</h2></label
+              >
+              <!--Hieronder moet je je nieuwe wachtwoord opnieuw invullen-->
+              <input
+                type="password"
+                id="password_new2"
+                name="password_new2"
+                class="input"
+                placeholder="Herhaal nieuw wachtwoord"
+                required
+              />
+            </div>
+            <div class="submitbox">
+              <button type="submit" class="btn btn-primary">
+                Maak nieuw wachtwoord
+              </button>
+            </div>
+          </form>
         </div>
       </div>
-
-      <!-- Hier wordt er aangegeven dat het aankomende stukje is geschreven in JavaScript -->
-      <script
-        src="https://code.jquery.com/jquery-3.6.0.js"
-        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-        crossorigin="anonymous"
-      ></script>
-      <script>
-        const tabBtn = document.querySelectorAll(".tab");
-        const tab = document.querySelectorAll(".tabShow");
-
-        function tabs(panelIndex) {
-          tab.forEach(function (node) {
-            node.style.display = "none";
-          });
-          tab[panelIndex].style.display = "block";
-        }
-        tabs(0);
-      </script>
-      <script>
-        $(".tab").click(function () {
-          $(this).addClass("active").siblings().removeClass("active");
-        });
-      </script>
     </div>
+
+    <!-- Hier wordt er aangegeven dat het aankomende stukje is geschreven in JavaScript -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const tabBtn = document.querySelectorAll(".tab");
+      const tab = document.querySelectorAll(".tabShow");
+
+      function tabs(panelIndex) {
+        tab.forEach(function (node) {
+          node.style.display = "none";
+        });
+        tab[panelIndex].style.display = "block";
+      }
+      tabs(0);
+    </script>
+    <script>
+      $(".tab").click(function () {
+        $(this).addClass("active").siblings().removeClass("active");
+      });
+    </script>
   </div>
 </div>
 {% endblock %}
