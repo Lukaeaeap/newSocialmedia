@@ -27,14 +27,18 @@
               and %B is the full name of the month-->
             </span>
             <span class="right"
-              ><a type="button" class="text-button">Edit post</a>
+              >{% if current_user.email == notes.user.email %}<a
+                type="button"
+                class="text-button"
+                >Edit post</a
+              >
               <strong>·</strong>
               <a
                 type="button"
                 class="text-button"
                 onClick="deleteNote({{notes.id}})"
                 >Delete</a
-              >
+              >{% endif %}
             </span>
 
             <div id="fake-post2">{{ notes.data }}</div>
@@ -63,14 +67,18 @@
               and %B is the full name of the month-->
             </span>
             <span class="right"
-              ><a type="button" class="text-button">Edit post</a>
+              >{% if current_user.email == notes.user.email %}<a
+                type="button"
+                class="text-button"
+                >Edit post</a
+              >
               <strong>·</strong>
               <a
                 type="button"
                 class="text-button"
                 onClick="deleteNote({{notes.id}})"
                 >Delete</a
-              >
+              >{% endif %}
             </span>
 
             <div id="fake-post-tot">{{ notes.data }}</div>
