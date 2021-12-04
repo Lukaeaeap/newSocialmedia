@@ -11,9 +11,7 @@ html {
 }
 body {
     background: linear-gradient(180deg, #FFFFFF 0%, #6284FF 100%);
-    /*font-family: 'Times New Roman', Times, serif;*/
-    font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    /* LETTERTYPE NOG VERANDEREN */
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .home {
@@ -42,33 +40,16 @@ body {
     /* Dit zorgt ervoor dat je muis een pointer krijgt */
 }
 
-/*
-#fake-post2 {
-    font-family: Arial;
-    background-color: white;
-    font-weight: bold;
-    //Dit zorgt ervoor dat je de grootte van het tekstvak niet kunt veranderen via de site 
-    width: 60%;
-    margin: 1% 20%;
-    padding: 30px;
-    border-radius: 20px;
-}*/
-
 /* Hieronder is de vormgeving van de Loginbox te zien */
 .login {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    /* hierboven is de plek van deze box bepaald */
-    transform: translate(-50%, -50%);
     background: #ffffff;
     width: 410px;
+    margin-top: 11%;
     padding: 20px 30px;
     /* verplaatsing voor de tekst IN een 'box' en bij margin is er verplaatsing van de hele webpagina */
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
     /* hier maak je de zijlijnen van de 'box' zichtbaar doormiddel van het gebruiken van schaduwen */
     border-radius: 5px;
-
 }
 
 /* Dit is het kopje 'login' in de loginbox en het kopje 'registreer'in de Registreerbox*/
@@ -83,13 +64,10 @@ body {
 }
 
 .registervierkant {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    /* hierboven is de plek van deze box bepaald */
-    transform: translate(-50%, -50%);
     background: #ffffff;
     width: 410px;
+    margin-top: 5%;
+    margin-bottom: 5%;
     padding: 20px 30px;
     /* verplaatsing voor de tekst IN een 'box' en bij margin is er verplaatsing van de hele webpagina */
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
@@ -172,12 +150,12 @@ form .data input {
 
 /* Dit is het venstertje wat opkomt als je op de '+' klikt om een post aan te maken */
 .modal {
+    /* Hierdoor hoft het geen rekening te houden met omringende factoren etc. */
     display: none;
-    /* VRAGEN AAN LEX WAT DIT PRECIES DOET */
+    /* Hiermee wordt het relatief gepositioneerd */
     position: fixed;
-    /* VRAGEN AAN LEX WAT DIT PRECIES DOET */
+    /* Dit zorgt ervoor dat het geopende venstertje 'bovenop' alles komt */
     z-index: 1;
-    /* VRAGEN AAN LEX WAT DIT PRECIES DOET */
     /* onderstaande elementen zijn voor de positionering van het venstertje */
     padding-top: 100px;
     left: 0;
@@ -199,7 +177,6 @@ form .data input {
     padding: 30px;
     border: 1px solid #888;
     width: 45%;
-    min-height: 60%;
     border-radius: 30px;
 }
 
@@ -246,8 +223,7 @@ form .data input {
     border-radius: 15px;
 }
 
-.B-knop {
-    font-weight: bold;
+.knop{
     float: left;
     color: #000;
     text-align: center;
@@ -259,36 +235,18 @@ form .data input {
     cursor: pointer;
     background-color: transparent;
     border-radius: 15px;
+}
+
+.B-knop {
+    font-weight: bold;
 }
 
 .I-knop {
     font-style: italic;
-    float: left;
-    color: #000;
-    text-align: center;
-    margin: 3% 2px;
-    padding: 6px 20px;
-    height: 35px;
-    width: 55px;
-    font-size: 14px;
-    cursor: pointer;
-    background-color: transparent;
-    border-radius: 15px;
 }
 
 .U-knop {
     text-decoration: underline;
-    float: left;
-    color: #000;
-    text-align: center;
-    margin: 3% 2px;
-    padding: 6px 20px;
-    height: 35px;
-    width: 55px;
-    font-size: 14px;
-    cursor: pointer;
-    background-color: transparent;
-    border-radius: 15px;
 }
 
 .buttoninpost:hover {
@@ -296,45 +254,19 @@ form .data input {
 }
 
 /* De CSS van de fake posts */
-#fake-post-tot {
+.post-tot {
     /*font-family: Arial;*/
     background-color: white;
     padding: 30px;
     border-radius: 20px;
 }
 
-#fake-post1 {
-    font-family: Arial;
-    text-decoration: underline;
-    background-color: white;
-    resize: none;
-    /*Dit zorgt ervoor dat je de grootte van het tekstvak niet kunt veranderen via de site */
-    height: 190px;
-    width: 60%;
-    padding: 15px;
-    border-radius: 20px;
-}
-
-#fake-post2 {
+.post {
     font-family: Arial;
     background-color: white;
     font-weight: bold;
     /*Dit zorgt ervoor dat je de grootte van het tekstvak niet kunt veranderen via de site */
     padding: 30px;
-    border-radius: 20px;
-}
-
-#fake-post3 {
-    display: block;
-    font-family: Arial;
-    background-color: white;
-    font-style: italic;
-    resize: none;
-    /*Dit zorgt ervoor dat je de grootte van het tekstvak niet kunt veranderen via de site */
-    height: 190px;
-    width: 60%;
-    margin: 1% 20%;
-    padding: 15px;
     border-radius: 20px;
 }
 
@@ -398,26 +330,30 @@ nav a-account.active {
 }
 
 h1 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     margin-top: 40px;
-    margin-bottom: 35px;
+    /* margin-bottom: 35px; */
 }
 
 h2 {
-    font-size: 8px;
-    letter-spacing: 1px;
+    font-size: 12px;
     margin-left: 2px;
-    margin-top: 10px;
+    margin-top: 25px;
 }
 
 input {
     border: 0;
     border-bottom: 1px solid;
-    width: 90%;
+    width: 85%;
     font-size: .7em;
     padding: 2px 0;
     color: #070707;
     outline: none;
+}
+
+.privacybeleid {
+    font-size: 14px;
+    width: 85%;
 }
 
 span {
@@ -448,68 +384,42 @@ span {
     color: #000;
     cursor: pointer;
 }
-.update {
-    text-transform: uppercase;
-    font-size: 15px;
-    border: 0;
-    color: black;
-    background: linear-gradient(180deg, #FFFFFF 0%, #6284FF 100%);
-    padding: 7px 15px;
-    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, .2);
-    cursor: pointer;
-    margin-top: 15px;
-}
 
 .tabShow {
     display: none;
 }
 
-.buttonpost {
-    color: black;
+.buttonright{
     border-color: #cdebf9;
-    text-align: center;
-    padding: 20px 35px;
-    font-size: 18px;
-    width: 97px;
-    text-decoration: none;
-    cursor: pointer;
-    background-color: #cdebf9;
-    cursor: pointer;
-    border: 10px;
-    border-radius: 15px;
-    position: fixed;
-    bottom: 150px;
-    right: 10px;
-
-}
-/*Hieronder is de button gemaakt die op de homepage rechtsonder zichtbaar is, genaamd account*/
-.butaccount {
-    border-color: #cdebf9;
-    font-size: 15px;
     border: 0;
     border-radius: 15px;
     color: black;
     background: #cdebf9;
-    padding: 21px 21px;
     cursor: pointer;
     position: fixed;
     bottom: 80px;
     right: 10px;
+    width: 105px;
+}
+
+.buttonpost {
+    padding: 20px 35px;
+    font-size: 18px;
+    border-radius: 15px;
+    bottom: 150px;
+
+}
+/* Hieronder is de button gemaakt die op de homepage rechtsonder zichtbaar is, genaamd account*/
+.butaccount {
+    font-size: 15px;
+    padding: 21px 21px;
+    bottom: 80px;
 }
 
 .butlogout {
-    border-color: #cdebf9;
     font-size: 15px;
-    border: 0;
-    border-radius: 15px;
-    color: black;
-    background: #cdebf9;
     padding: 21px 21px;
-    cursor: pointer;
-    position: fixed;
     bottom: 10px;
-    right: 10px;
-    width: 97px;
 }
 
 .Welkom {

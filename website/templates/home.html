@@ -5,7 +5,7 @@
   <div class="container">
     <!---Hier wordt de tekst en buttons onder de taakbalk weergegeven-->
     <div class="home">
-      <div id="yourposts">
+      <div class="yourposts">
         <div>
           <br />
           <h1 class="Welkom">Welkom bij Meta, {{current_user.first_name}}!</h1>
@@ -13,7 +13,7 @@
 
         <!-- All posts from the current user: -->
         <br />
-        <h4>Jou posts</h4>
+        <h4>Jouw posts:</h4>
         <br />
         {% for notes in user.notes %}
         <ul style="list-style-type: none">
@@ -30,18 +30,18 @@
               >{% if current_user.email == notes.user.email %}<a
                 type="button"
                 class="text-button"
-                >Edit post</a
+                >Bewerk post</a
               >
               <strong>·</strong>
               <a
                 type="button"
                 class="text-button"
                 onClick="deleteNote({{notes.id}})"
-                >Delete</a
+                >Verwijder</a
               >{% endif %}
             </span>
 
-            <div id="fake-post2">{{ notes.data }}</div>
+            <div class="post">{{ notes.data }}</div>
             <!--<script>console.log("test: " + {{notes.id}})</script>-->
           </li>
         </ul>
@@ -51,9 +51,9 @@
         {% endfor %}
       </div>
       <!-- All posts that are in the database: -->
-      <div id="allposts">
+      <div class="allposts">
         <br />
-        <h4>Iedereens posts</h4>
+        <h4>Iedereens posts:</h4>
         <br />
         {% for notes in posts %}
         <ul style="list-style-type: none">
@@ -70,18 +70,18 @@
               >{% if current_user.email == notes.user.email %}<a
                 type="button"
                 class="text-button"
-                >Edit post</a
+                >Bewerk post</a
               >
               <strong>·</strong>
               <a
                 type="button"
                 class="text-button"
                 onClick="deleteNote({{notes.id}})"
-                >Delete</a
+                >Verwijder</a
               >{% endif %}
             </span>
 
-            <div id="fake-post-tot">{{ notes.data }}</div>
+            <div class="post-tot">{{ notes.data }}</div>
             <!--<script>console.log("test: " + {{notes.id}})</script>-->
           </li>
         </ul>
@@ -90,11 +90,13 @@
       </div>
     </div>
   </div>
-  <button class="buttonpost" id="myBtn">+</button>
+  <button class="buttonpost buttonright" id="myBtn">+</button>
   <a id="account" href="/account"
-    ><button class="butaccount">Account</button></a
+    ><button class="butaccount buttonright">Account</button></a
   >
-  <a id="logout" href="/logout"><button class="butlogout">Logout</button></a>
+  <a id="logout" href="/logout"
+    ><button class="butlogout buttonright">Uitloggen</button></a
+  >
 </div>
 
 <!-- Hier wordt er aangegeven dat het aankomende stukje is geschreven in JavaScript om het post venster te maken -->

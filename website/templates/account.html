@@ -21,7 +21,7 @@ content %}
       </div>
       <div class="rightbox-account">
         <div class="profile tabShow">
-          <h1>Persoons informatie</h1>
+          <h1>Persoonlijke informatie</h1>
           <h2>Voornaam</h2>
           <input
             type="text"
@@ -36,7 +36,9 @@ content %}
             class="input"
             value="{{current_user.birth_date.strftime('%Y-%m-%d')}}"
           />
-          <button class="update">Update</button>
+          <div class="submitbox">
+            <button type="submit" class="btn btn-primary">Wijzig</button>
+          </div>
         </div>
 
         <div class="settings tabShow">
@@ -45,14 +47,13 @@ content %}
           <input type="text" class="input" value="{{current_user.user_name}}" />
           <h2>Emailadres</h2>
           <input type="text" class="input" value="{{current_user.email}}" />
-          <h2>Wachtwoord</h2>
-          <input dissable type="password" class="input" value="********" />
-          <button class="update">Update</button>
+          <div class="submitbox">
+            <button type="submit" class="btn btn-primary">Wijzig</button>
+          </div>
         </div>
         <div class="privacy tabShow">
-          <h1>Informatie over privacy van Meta</h1>
-          <h4>Belangrijk</h4>
-          <p style="margin-right: 50px">
+          <h1>Privacybeleid van Meta</h1>
+          <p class="privacybeleid">
             Wij verwerken en gebruiken uw gegevens om het contract uit te voeren
             en onze diensten te verlenen, om onze diensten en onze websites te
             verbeteren en aan te passen aan uw behoeften, om updates en upgrades
@@ -69,9 +70,9 @@ content %}
           </p>
         </div>
         <div class="password tabShow">
-          <form method="POST" style="margin-right: 50px">
+          <form method="POST">
             <div id="password">
-              <h1>Wachtwoord veranderen</h1>
+              <h1>Wachtwoord wijzigen</h1>
             </div>
             <div class="input">
               <label for="password_old"><h2>Oud wachtwoord</h2></label>
@@ -145,5 +146,8 @@ content %}
       });
     </script>
   </div>
+  <a id="logout" href="/logout"
+    ><button class="butlogout buttonright">Uitloggen</button></a
+  >
 </div>
 {% endblock %}
