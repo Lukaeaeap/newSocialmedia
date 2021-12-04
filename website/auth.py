@@ -7,6 +7,56 @@ from flask_login import login_user, login_required, logout_user, current_user
 
 auth = Blueprint('auth', __name__)
 
+'''Error messages English'''
+'''
+# Loggin in
+wrong_password = 'Incorrect password, try again.'
+no_match = 'Email and password do not match.'
+logged_in = 'Logged in!'
+
+# Logout
+logged_out = 'Logged out successfully!'
+
+# Signing up
+email_exists = 'Email already exists.'
+username_exists = 'Username already exists.'
+email_short = 'Email must be longer than 4 characters.'
+firstname_short = 'First name must be longer than 1 character.'
+password_no_match = 'Passwords do not match.'
+password_short = 'Password must be at least 7 characters.'
+created_account = 'Account created'
+
+# Changing password
+new_password_short = 'New password must be at least 7 characters.'
+same_password = 'Old and new passwords are the same.'
+password_old_wrong = 'Old password incorrect.'
+update_pass_succes = 'Password updated succesfully.'
+'''
+
+'''Error messages Dutch'''
+# Loggin in
+wrong_password = 'Uw wachtwoord is verkeerd.'
+no_match = 'Uw mail of wachtwoord klopt niet.'
+logged_in = 'Ingelogd!'
+
+# Logout
+logged_out = 'Succesvol uitgelogd!'
+
+# Signing up
+email_exists = 'Email bestaat al.'
+username_exists = 'Gebruikersnaam bestaat al.'
+email_short = 'Email moet langer dan 4 karakters zijn.'
+firstname_short = 'Voornaam moet langer dan 1 karakter zijn.'
+password_no_match = 'Wachtwoorden komen niet overeen.'
+password_short = 'Wachtwoord moet minstens 7 karakters lang zijn.'
+created_account = 'Account aangemaakt'
+
+# Changing password
+new_password_short = 'Het nieuwe wachtwoord moet minstens 7 karakters lang zijn.'
+same_password = 'Het oude en nieuwe wachtwoord zijn hetzelfde.'
+password_old_wrong = 'Het oude wachtwoord is incorrect.'
+update_pass_succes = 'Wachtwoord succesvol geüpdate.'
+
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
@@ -18,13 +68,13 @@ def login():
 
         if user:
             if check_password_hash(user.password, password):
-                # flash('Logged in successfully!', category='succes')
+                flash(logged_in, category='succes')
                 login_user(user, remember=True)
                 return redirect(url_for('views.home'))
             else:
-                flash('Incorrect password, try again.', category='error')
+                flash(wrong_password, category='error')
         else:
-            flash('Email and password do not match', category='error')
+            flash(no_match, category='error')
     return render_template("login.html", user=current_user)
 
 
@@ -32,7 +82,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    flash('Logged out successfully!', category='succes')
+    flash(logged_out, category='succes')
     return redirect(url_for('auth.login'))
 
 
@@ -52,20 +102,19 @@ def sign_up():
         user_check2 = User.query.filter_by(user_name=user_name).first()
 
         if user:
-            flash('Email already exists', category='error')
+            flash(email_exists, category='error')
         elif user_check2:
-            flash('Username already exists', category='error')
-            print("error")
+            flash(username_exists, category='error')
         elif len(email) < 4:
-            flash('Email must be longer than 4 characters', category='error')
+            flash(email_short, category='error')
         elif len(first_name) < 2:
-            flash('First name must be longer than 1 character', category='error')
+            flash(firstname_short, category='error')
             pass
         elif password1 != password2:
-            flash('Passwords do not match', category='error')
+            flash(password_no_match, category='error')
             pass
         elif len(password1) < 7:
-            flash('Password must be at least 7 characters', category='error')
+            flash(password_short, category='error')
             pass
         else:
             # Add the user to the database
@@ -74,7 +123,7 @@ def sign_up():
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user, remember=True)
-            # flash('Account created', category='succes')
+            flash(created_account, category='succes')
             # when logged in go back to the home page
             return redirect(url_for('views.home'))
     return render_template("sign_up.html", user=current_user)
@@ -95,7 +144,7 @@ def account():
                     if password1 != password2:
                         pass
                     elif len(password1) < 7:
-                        flash('Password must be at least 7 characters', category='error')
+                        flash(new_password_short, category='error')
                         pass
                     else:
                         # Update the user to the database
@@ -104,11 +153,11 @@ def account():
                         db.session.add(user_update)
                         db.session.commit()
                         login_user(user_update, remember=True)
-                        flash('Password updated', category='succes')
+                        flash(update_pass_succes, category='succes')
                         return redirect(url_for('auth.account'))
                 else:
-                    flash('Passwords are the same', category='error')
+                    flash(same_password, category='error')
 
             else:
-                flash('Old password incorrect', category='error')
+                flash(password_old_wrong, category='error')
     return render_template("account.html", user=current_user)

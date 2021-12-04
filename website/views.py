@@ -37,8 +37,8 @@ def home():
 
     Notes = Note.query.all()
     Users = User.query.all()
-    for user in Users:
-        print(user.user_name)
+    # for user in Users:
+    #     print(user.user_name)
 
     return render_template("home.html", user=current_user, posts=Notes, people=Users)
 
