@@ -4,58 +4,14 @@ from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
+import json
 
 auth = Blueprint('auth', __name__)
 
-'''Error messages English'''
-'''
-# Loggin in
-wrong_password = 'Incorrect password, try again.'
-no_match = 'Email and password do not match.'
-logged_in = 'Logged in!'
+LANGUAGE = "nl"
 
-# Logout
-logged_out = 'Logged out successfully!'
-
-# Signing up
-email_exists = 'Email already exists.'
-username_exists = 'Username already exists.'
-email_short = 'Email must be longer than 4 characters.'
-firstname_short = 'First name must be longer than 1 character.'
-password_no_match = 'Passwords do not match.'
-password_short = 'Password must be at least 7 characters.'
-created_account = 'Account created'
-
-# Changing password
-new_password_short = 'New password must be at least 7 characters.'
-same_password = 'Old and new passwords are the same.'
-password_old_wrong = 'Old password incorrect.'
-update_pass_succes = 'Password updated succesfully.'
-'''
-
-'''Error messages Dutch'''
-# Loggin in
-wrong_password = 'Uw wachtwoord is verkeerd.'
-no_match = 'Uw mail of wachtwoord klopt niet.'
-logged_in = 'Ingelogd!'
-
-# Logout
-logged_out = 'Succesvol uitgelogd!'
-
-# Signing up
-email_exists = 'Email bestaat al.'
-username_exists = 'Gebruikersnaam bestaat al.'
-email_short = 'Email moet langer dan 4 karakters zijn.'
-firstname_short = 'Voornaam moet langer dan 1 karakter zijn.'
-password_no_match = 'Wachtwoorden komen niet overeen.'
-password_short = 'Wachtwoord moet minstens 7 karakters lang zijn.'
-created_account = 'Account aangemaakt'
-
-# Changing password
-new_password_short = 'Het nieuwe wachtwoord moet minstens 7 karakters lang zijn.'
-same_password = 'Het oude en nieuwe wachtwoord zijn hetzelfde.'
-password_old_wrong = 'Het oude wachtwoord is incorrect.'
-update_pass_succes = 'Wachtwoord succesvol geüpdate.'
+with open(f"website/static/languages/{LANGUAGE}.json", "r") as f:
+    textlg = json.load(f)
 
 
 @auth.route('/login', methods=['GET', 'POST'])
@@ -65,16 +21,15 @@ def login():
         password = request.form.get('password')
         # Filter the user for the email, and look at the first email (which is unique so there is only one).
         user = User.query.filter_by(email=email).first()
-
         if user:
             if check_password_hash(user.password, password):
-                flash(logged_in, category='succes')
+                flash(textlg['flashes']['logged_in'], category='succes')
                 login_user(user, remember=True)
                 return redirect(url_for('views.home'))
             else:
-                flash(wrong_password, category='error')
+                flash(textlg['flashes']['wrong_password'], category='error')
         else:
-            flash(no_match, category='error')
+            flash(textlg['flashes']['no_match'], category='error')
     return render_template("login.html", user=current_user)
 
 
@@ -82,7 +37,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    flash(logged_out, category='succes')
+    flash(textlg['flashes']['logged_out'], category='succes')
     return redirect(url_for('auth.login'))
 
 
@@ -102,20 +57,17 @@ def sign_up():
         user_check2 = User.query.filter_by(user_name=user_name).first()
 
         if user:
-            flash(email_exists, category='error')
+            flash(textlg['flashes']['email_exists'], category='error')
         elif user_check2:
-            flash(username_exists, category='error')
+            flash(textlg['flashes']['username_exists'], category='error')
         elif len(email) < 4:
-            flash(email_short, category='error')
+            flash(textlg['flashes']['email_short'], category='error')
         elif len(first_name) < 2:
-            flash(firstname_short, category='error')
-            pass
+            flash(textlg['flashes']['firstname_short'], category='error')
         elif password1 != password2:
-            flash(password_no_match, category='error')
-            pass
+            flash(textlg['flashes']['password_no_match'], category='error')
         elif len(password1) < 7:
-            flash(password_short, category='error')
-            pass
+            flash(textlg['flashes']['password_short'], category='error')
         else:
             # Add the user to the database
             new_user = User(email=email, first_name=first_name, user_name=user_name, last_name=last_name, birth_date=birth_date,
@@ -123,7 +75,7 @@ def sign_up():
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user, remember=True)
-            flash(created_account, category='succes')
+            flash(textlg['flashes']['created_account'], category='succes')
             # when logged in go back to the home page
             return redirect(url_for('views.home'))
     return render_template("sign_up.html", user=current_user)
@@ -133,31 +85,68 @@ def sign_up():
 @auth.route('/account', methods=['GET', 'POST'])
 def account():
     if request.method == 'POST':
-        password_ol = request.form.get('password_old')
-        password1 = request.form.get('password_new2')
-        password2 = request.form.get('password_new2')
+        if 'submit-password' in request.form:
+            print("Changing password")
+            password_ol = request.form.get('password_old')
+            password1 = request.form.get('password_new2')
+            password2 = request.form.get('password_new2')
 
-        user = User.query.filter_by(email=current_user.email).first()
-        if user:
-            if check_password_hash(user.password, password_ol):
-                if password_ol != password1:
-                    if password1 != password2:
-                        pass
-                    elif len(password1) < 7:
-                        flash(new_password_short, category='error')
-                        pass
+            user = User.query.filter_by(email=current_user.email).first()
+            if user:
+                if check_password_hash(user.password, password_ol):
+                    if password_ol != password1:
+                        if password1 != password2:
+                            pass
+                        elif len(password1) < 7:
+                            flash(textlg['flashes']['new_password_short'], category='error')
+                            pass
+                        else:
+                            # Update the user to the database
+                            user_update = current_user
+                            user_update.password = generate_password_hash(password1, method='sha256')
+                            db.session.add(user_update)
+                            db.session.commit()
+                            login_user(user_update, remember=True)
+                            flash(textlg['flashes']['update_pass_succes'], category='succes')
+                            return redirect(url_for('auth.account'))
                     else:
-                        # Update the user to the database
-                        user_update = current_user
-                        user_update.password = generate_password_hash(password1, method='sha256')
-                        db.session.add(user_update)
-                        db.session.commit()
-                        login_user(user_update, remember=True)
-                        flash(update_pass_succes, category='succes')
-                        return redirect(url_for('auth.account'))
+                        flash(textlg['flashes']['same_password'], category='error')
                 else:
-                    flash(same_password, category='error')
+                    flash(textlg['flashes']['old_password_wrong'], category='error')
+        elif 'submit-settings' in request.form:
+            username_new = request.form.get('userNameNew')
+            email_new = request.form.get('emailNew')
 
-            else:
-                flash(password_old_wrong, category='error')
+            user_mail_check = User.query.filter_by(email=email_new).first()
+            user_name_check = User.query.filter_by(user_name=username_new).first()
+            if user_mail_check and user_mail_check.email != current_user.email:
+                flash(textlg['flashes']['email_exists'], category='error')
+            elif user_name_check and user_name_check.user_name != current_user.user_name:
+                flash(textlg['flashes']['username_exists'], category='error')
+            elif len(email_new) < 4:
+                flash(textlg['flashes']['email_short'], category='error')
+            elif email_new != current_user.email or username_new != current_user.user_name:
+                # Update the user to the database
+                user_update = current_user
+                user_update.email = email_new
+                user_update.user_name = username_new
+                db.session.add(user_update)
+                db.session.commit()
+                login_user(user_update, remember=True)
+                flash(textlg['flashes']['update_account_succes'], category='succes')
+                return redirect(url_for('auth.account'))
+        elif 'submit-profile' in request.form:
+            first_name_new = request.form.get('firstNameNew')
+            last_name_new = request.form.get('lastNameNew')
+            birth_date_new = request.form.get('birthDateNew')
+            if first_name_new != current_user.first_name or last_name_new != current_user.last_name or birth_date_new != current_user.birth_date:
+                user_update = current_user
+                user_update.first_name = first_name_new
+                user_update.last_name = last_name_new
+                user_update.birth_date = birth_date_new
+                db.session.add(user_update)
+                db.session.commit()
+                login_user(user_update, remember=True)
+                flash(textlg['flashes']['update_account_succes'], category='succes')
+                return redirect(url_for('auth.account'))
     return render_template("account.html", user=current_user)

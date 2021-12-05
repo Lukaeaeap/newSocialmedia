@@ -21,35 +21,79 @@ content %}
       </div>
       <div class="rightbox-account">
         <div class="profile tabShow">
-          <h1>Persoonlijke informatie</h1>
-          <h2>Voornaam</h2>
-          <input
-            type="text"
-            class="input"
-            value="{{current_user.first_name}}"
-          />
-          <h2>Achternaam</h2>
-          <input type="text" class="input" value="{{current_user.last_name}}" />
-          <h2>Geboortedatum</h2>
-          <input
-            type="date"
-            class="input"
-            value="{{current_user.birth_date.strftime('%Y-%m-%d')}}"
-          />
-          <div class="submitbox">
-            <button type="submit" class="btn btn-primary">Wijzig</button>
-          </div>
+          <form method="POST">
+            <h1>Persoonlijke informatie</h1>
+            <label for="firstNameNew"><h2>Voornaam</h2></label>
+            <input
+              type="text"
+              class="input"
+              id="firstNameNew"
+              name="firstNameNew"
+              value="{{current_user.first_name}}"
+              required
+            />
+            <label for="lastNameNew"><h2>Achternaam</h2></label>
+            <input
+              type="text"
+              class="input"
+              id="lastNameNew"
+              name="lastNameNew"
+              value="{{current_user.last_name}}"
+              required
+            />
+            <label for="birthDateNew"><h2>Geboortedatum</h2></label>
+            <input
+              type="date"
+              class="input"
+              id="birthDateNew"
+              name="birthDateNew"
+              value="{{current_user.birth_date.strftime('%Y-%m-%d')}}"
+              required
+            />
+
+            <div class="submitbox">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                name="submit-profile"
+              >
+                Wijzig
+              </button>
+            </div>
+          </form>
         </div>
 
         <div class="settings tabShow">
-          <h1>Inloggegevens</h1>
-          <h2>Gebruikersnaam</h2>
-          <input type="text" class="input" value="{{current_user.user_name}}" />
-          <h2>Emailadres</h2>
-          <input type="text" class="input" value="{{current_user.email}}" />
-          <div class="submitbox">
-            <button type="submit" class="btn btn-primary">Wijzig</button>
-          </div>
+          <form method="POST">
+            <h1>Inloggegevens</h1>
+            <label for="userNameNew"><h2>Gebruikersnaam</h2></label>
+            <input
+              type="text"
+              class="input"
+              id="userNameNew"
+              name="userNameNew"
+              value="{{current_user.user_name}}"
+              required
+            />
+            <label for="emailNew"><h2>Emailadres</h2></label>
+            <input
+              type="email"
+              class="input"
+              id="emailNew"
+              name="emailNew"
+              value="{{current_user.email}}"
+              required
+            />
+            <div class="submitbox">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                name="submit-settings"
+              >
+                Wijzig
+              </button>
+            </div>
+          </form>
         </div>
         <div class="privacy tabShow">
           <h1>Privacybeleid van Meta</h1>
@@ -113,7 +157,11 @@ content %}
               />
             </div>
             <div class="submitbox">
-              <button type="submit" class="btn btn-primary">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                name="submit-password"
+              >
                 Maak nieuw wachtwoord
               </button>
             </div>

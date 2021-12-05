@@ -63,13 +63,15 @@
               <strong>·</strong> <strong>@{{notes.user.user_name}}</strong>
               <strong>·</strong> {{notes.date.strftime('%a %d %B')}}
               <strong>·</strong> {{notes.date.strftime('%H:%M')}}
-              <!--for the strtime function a capital letter means short version of a written text so %a is the day of the week but short 
-              and %B is the full name of the month-->
+              <!--for the strtime function a capital letter means short version of a,
+                written text so %a is the day of the week but short 
+                and %B is the full name of the month-->
             </span>
             <span class="right"
               >{% if current_user.email == notes.user.email %}<a
                 type="button"
                 class="text-button"
+                id=""
                 >Bewerk post</a
               >
               <strong>·</strong>
@@ -126,6 +128,7 @@
   };
 
   // Hier wordt aangegeven dat het venstertje gesloten moet worden zodra er op een plek buiten het venster wordt geklikt
+
   window.onclick = function (event) {
     if (event.target == modal) {
       modal.style.display = "none";
