@@ -1,0 +1,23 @@
+{
+  "flashes": {
+    "wrong_password": "Verkeerd wachtwoord",
+    "no_match": "Uw mail of wachtwoord klopt niet.",
+    "logged_in": "Ingelogd!",
+    "logged_out": "Succesvol uitgelogd!",
+    "email_exists": "Email bestaat al.",
+    "username_exists": "Gebruikersnaam bestaat al.",
+    "email_short": "Email moet langer dan 4 karakters zijn.",
+    "firstname_short": "Voornaam moet langer dan 1 karakter zijn.",
+    "password_no_match": "Wachtwoorden komen niet overeen.",
+    "password_short": "Wachtwoord moet minstens 7 karakters lang zijn.",
+    "created_account": "Account aangemaakt!",
+    "new_password_short": "Het nieuwe wachtwoord moet minstens 7 karakters lang zijn.",
+    "same_password": "Het oude en nieuwe wachtwoord zijn hetzelfde.",
+    "old_password_wrong": "Het oude wachtwoord is incorrect.",
+    "update_pass_succes": "Wachtwoord succesvol geupdate.",
+    "already_added": "Je hebt dit al gepost!",
+    "post_short": "Post is veel te kort",
+    "post_succes": "Post toegevoegd",
+    "update_account_succes": "Je profiel is succesvol bijgewerkt!"
+  }
+}

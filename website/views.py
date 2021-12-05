@@ -7,6 +7,12 @@ import json
 
 views = Blueprint('views', __name__)
 
+LANGUAGE = "nl"
+
+with open(f"website/static/languages/{LANGUAGE}.json", "r") as f:
+    textlg = json.load(f)
+# flash(textlg['flashes']['no_match'], category='error')
+
 
 @views.route('/', methods=['GET', 'POST'])
 @login_required
@@ -23,17 +29,17 @@ def home():
             note_user_check = Note.query.filter(note_text_check.user_id == current_user.id).first()
             print(note_user_check)
             if note_user_check:
-                flash('You already added this!', category='error')
+                flash(textlg['flashes']['already_added'], category='error')
                 boolean_pass = False
             else:
                 boolean_pass = True
         if len(note) < 1:
-            flash('Note is way too short', category='error')
+            flash(textlg['flashes']['post_short'], category='error')
         elif boolean_pass:
             new_note = Note(data=note, user_id=current_user.id)
             db.session.add(new_note)
             db.session.commit()
-            flash('Note added', category='succes')
+            flash(textlg['flashes']['post_succes'], category='succes')
 
     Notes = Note.query.all()
     Users = User.query.all()
