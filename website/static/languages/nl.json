@@ -18,6 +18,7 @@
     "already_added": "Je hebt dit al gepost!",
     "post_short": "Post is veel te kort",
     "post_succes": "Post toegevoegd",
-    "update_account_succes": "Je profiel is succesvol bijgewerkt!"
+    "update_account_succes": "Je profiel is succesvol bijgewerkt!",
+    "email_nonexistent": "Er bestaat geen account met deze email"
   }
 }

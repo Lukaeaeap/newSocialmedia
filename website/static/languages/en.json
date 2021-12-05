@@ -18,6 +18,7 @@
     "already_added": "You already added this!",
     "post_short": "Post is way too short",
     "post_succes": "Post added",
-    "update_account_succes": "Your profile is succesfully updated!"
+    "update_account_succes": "Your profile is succesfully updated!",
+    "email_nonexistent": "This email does not exist"
   }
 }

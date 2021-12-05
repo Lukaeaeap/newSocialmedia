@@ -33,6 +33,27 @@ def login():
     return render_template("login.html", user=current_user)
 
 
+@auth.route('/forgot-password', methods=['GET', 'POST'])
+def forgot_password():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        # Filter the user for the email, and look at the first email (which is unique so there is only one).
+        user = User.query.filter_by(email=email).first()
+        if user and user.email == email:
+            return redirect(url_for('auth.new_password'))
+        else:
+            flash(textlg['flashes']['email_nonexistent'], category='error')
+    return render_template("forgot_password.html", user=current_user)
+
+
+@auth.route('/new-password', methods=['GET', 'POST'])
+def new_password():
+    print(f"user: {current_user}")
+    if request.method == 'POST':
+        print("Somethings at least works..")
+    return render_template("new_password.html", user=current_user)
+
+
 @auth.route('/logout')
 @login_required
 def logout():
