@@ -19,6 +19,13 @@
     "post_short": "Post is way too short",
     "post_succes": "Post added",
     "update_account_succes": "Your profile is succesfully updated!",
-    "email_nonexistent": "This email does not exist"
+    "email_nonexistent": "This email does not exist.",
+    "email_sent": "Check your email to change your password.",
+    "token_expired": "This page does not exist (anymore)."
+  },
+  "messages": {
+    "mail_subject": "Changing password",
+    "mail_greet": "Hello",
+    "mail_content": "We've received a request to reset your password. If you want to reset your password, click the link below and enter your new password."
   }
 }

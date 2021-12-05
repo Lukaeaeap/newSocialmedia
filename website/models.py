@@ -38,3 +38,4 @@ class User(db.Model, UserMixin):
     creation_date = db.Column(db.DateTime(timezone=True), nullable=False, default=datetime.utcnow)
     # The notes that a user has created, use for relationships a capital
     notes = db.relationship('Note', back_populates='user')
+    hashCode = db.Column(db.String(120))

@@ -2,17 +2,29 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_login import LoginManager
-
+from flask_mail import Mail
 db = SQLAlchemy()
 DB_NAME = "database.db"
+mail = Mail()
+
+pass_for_mail = '#Luuk=Spam2020'
 
 
 def create_app():
     app = Flask(__name__)
+    app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+    app.config['MAIL_PORT'] = 465
+    app.config['MAIL_USERNAME'] = 'luukspamlol@gmail.com'
+    app.config['MAIL_PASSWORD'] = pass_for_mail
+    app.config['MAIL_USE_TLS'] = False
+    app.config['MAIL_USE_SSL'] = True
     app.config['SECRET_KEY'] = 'SeCReT key that no one knows'
     # The sqlite database is stored at a certain location the f before it gives the option to add a variable like the (global variable) DB_NAME to it:
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
     db.init_app(app)
+    mail.init_app(app)
 
     from .views import views
     from .auth import auth

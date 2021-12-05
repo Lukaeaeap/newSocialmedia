@@ -4,7 +4,12 @@ from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
+from .__init__ import mail
 import json
+from flask_mail import Message
+import random
+import string
+from itsdangerous import URLSafeTimedSerializer, SignatureExpired
 
 auth = Blueprint('auth', __name__)
 
@@ -40,18 +45,52 @@ def forgot_password():
         # Filter the user for the email, and look at the first email (which is unique so there is only one).
         user = User.query.filter_by(email=email).first()
         if user and user.email == email:
-            return redirect(url_for('auth.new_password'))
+            hashCode = ''.join(random.choices(string.ascii_letters + string.digits, k=24))
+            user.hashCode = hashCode
+            db.session.commit()
+            msg = Message(textlg['messages']['mail_subject'],
+                          sender="luukspamlol@gmail.com",
+                          recipients=[email])
+            msg.body = f"{textlg['messages']['mail_greet']} {user.first_name},\n\n{textlg['messages']['mail_content']}\n\nhttp://localhost:5000/new-password/{user.hashCode}"
+            mail.send(msg)
+            print(email)
+            flash(textlg['flashes']['email_sent'], category='succes')
         else:
             flash(textlg['flashes']['email_nonexistent'], category='error')
     return render_template("forgot_password.html", user=current_user)
 
 
-@auth.route('/new-password', methods=['GET', 'POST'])
-def new_password():
-    print(f"user: {current_user}")
-    if request.method == 'POST':
-        print("Somethings at least works..")
-    return render_template("new_password.html", user=current_user)
+@auth.route("/new-password/<string:hashCode>", methods=["GET", "POST"])
+def new_password(hashCode):
+    user = User.query.filter_by(hashCode=hashCode).first()
+    print(user)
+    if user:
+        if request.method == 'POST':
+            password1 = request.form['password_new1']
+            password2 = request.form['password_new2']
+            if password1 != password2:
+                flash(textlg['flashes']['password_no_match'], category='error')
+            elif len(password1) < 7:
+                flash(textlg['flashes']['new_password_short'], category='error')
+            else:
+                user.password = generate_password_hash(password1, method='sha256')
+                user.hashCode = None
+                db.session.commit()
+                login_user(user, remember=True)
+                flash(textlg['flashes']['update_pass_succes'], category='succes')
+                return redirect(url_for('views.home'))
+        return render_template("new_password.html", user=user)
+    else:
+        flash(textlg['flashes']['token_expired'], category='error')
+        return redirect(url_for('auth.login'))
+
+
+# @auth.route('/new-password', methods=['GET', 'POST'])
+# def new_password():
+#     print(f"user: {current_user}")
+#     if request.method == 'POST':
+#         print("Somethings at least works..")
+#     return render_template("new_password.html", user=current_user)
 
 
 @auth.route('/logout')
