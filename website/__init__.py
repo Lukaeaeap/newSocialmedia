@@ -7,7 +7,7 @@ db = SQLAlchemy()
 DB_NAME = "database.db"
 mail = Mail()
 
-pass_for_mail = '#Luuk=Spam2020'
+pass_for_mail = '*********'
 
 
 def create_app():
