@@ -22,3 +22,9 @@ De site is nu weer te geven op het volgende adres:
 'http://127.0.0.1:5000/'
 
 Door Luuk, Rana en Micha
+
+
+Om de Mail flask module te installeren gebruik je het volgende commando:
+'''bash
+pip3 install --user Flask_Mail
+'''
